@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🛍️ PurePick - Modern E-commerce Platform
 
-## Getting Started
+**PurePick** is a high-performance, visually stunning e-commerce application specializing in Fashion and Electronics. Built with the latest **Next.js 16** and **React 19**, it focuses on speed, sculptural elegance, and a premium shopping experience.
 
-First, run the development server:
+> **Project Status:** 🚧 Under Active Development (Work in Progress).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project leverages the latest industry standards for performance and developer experience:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **Framework:** [Next.js 16.2](https://nextjs.org/) (App Router & React Compiler enabled)
+* **Library:** [React 19](https://reactjs.org/)
+* **Styling:** [Tailwind CSS 4](https://tailwindcss.com/) with `tailwindcss-animate`
+* **Theme Management:** [Next-Themes](https://github.com/pacocoursey/next-themes) (Dark/Light mode support)
+* **Data Fetching:** Native `Fetch API` (Standard Web APIs)
+* **UI Components:** * [Lucide React](https://lucide.dev/) for consistent, minimal iconography.
+    * [React Spinners](https://www.davidhu.io/react-spinners/) for the global `DotLoader` system.
+    * `tailwind-scrollbar-hide` for a clean, app-like interface.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ✨ Key Features (Current)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [x] **Next-Gen Tech:** Fully utilizing **React 19** and the new **React Compiler** for optimized rendering.
+- [x] **Global Loading UI:** Professional integration for smooth page transitions.
+- [x] **Theme Switcher:** Seamless Dark and Light mode transitions with persistent state.
+- [x] **Responsive Design:** Mobile-first approach with custom CSS for a luxury feel.
+- [x] **Optimized UI:** Hidden scrollbars and smooth animations for a modern user journey.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🛠️ Roadmap - What's Coming Next?
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [ ] **Product Catalog:** Fetching and displaying dynamic product grids.
+- [ ] **Category Filtering:** Sorting products by Fashion, Electronics, etc.
+- [ ] **Shopping Cart:** Full state management for cart operations.
+- [ ] **User Profile:** Dedicated profile and order history sections.
+- [ ] **Secure Checkout:** Integrated payment processing simulation.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 💻 Local Setup
+
+To run **PurePick** on your machine:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/Seif-hefnawy/pure-pick.git](https://github.com/Seif-hefnawy/pure-pick.git)
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+Open [http://localhost:3000](http://localhost:3000) to explore the project! ✨
+
+---
+
+## 👤 Developer
+
+* **Seif Hefnawy**
+* GitHub: [@Seif-hefnawy](https://github.com/Seif-hefnawy)
+* LinkedIn: [Seif Hefnawy](https://linkedin.com/in/seif-hefnawy)
+
+---
+Made with ❤️ by Seif
