@@ -24,7 +24,8 @@ export default async function Products() {
           <span className="text-primary">Featured</span> Products
         </h3>
       </div>
-      <div className="flex md:grid overflow-x-auto md:overflow-visible gap-5 w-full snap-x snap-mandatory scrollbar-hide grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 px-4 md:px-8 h-fit items-start">
+      
+      <div className="flex no-scrollbar md:grid overflow-x-auto md:overflow-visible gap-5 w-full snap-x snap-mandatory scrollbar-hide grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 px-4 md:px-8 h-fit items-start">
         {/* Product Card Template */}
        
         {data?.map((currentProduct:Product) => (

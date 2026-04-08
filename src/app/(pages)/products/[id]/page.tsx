@@ -11,8 +11,11 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import ProductAction from "./ProductAction";
 
-export default async function ProductDetail({ params }) {
+
+
+export default async function ProductDetail({ params } : {params : any}) {
   const { id } = await params;
 
   const response = await fetch(
@@ -129,38 +132,7 @@ export default async function ProductDetail({ params }) {
             <p className="text-lg text-on-surface font-medium mb-10">
               {data.description}
             </p>
-            <div className="bg-primary-content border border-outline-variant rounded-lg p-4 mb-1">
-              <div className="flex justify-between items-center">
-                <span className="text-on-surface">Total Price:</span>
-                <span className="text-1xl font-bold text-primary-600">
-                  149.00 EGP
-                </span>
-              </div>
-            </div>
-            {/* Product Selectors */}
-            <div className="space-y-8 mb-5 mt-3">
-              <div className="flex gap-3 mb-4">
-                <div className="flex items-center bg-surface-container rounded-lg px-4 border border-outline-variant ">
-                  <button className="p-2 text-white hover:text-primary cursor-pointer">
-                    <span className=" text-lg">
-                      <Minus />
-                    </span>
-                  </button>
-                  <span className="px-4 font-bold text-white">1</span>
-                  <button className="p-2 text-white hover:text-primary cursor-pointer">
-                    <span className=" text-lg">
-                      <Plus />
-                    </span>
-                  </button>
-                </div>
-                <button className="flex-1 bg-primary text-primary-content font-bold rounded-lg py-4 hover:scale-[1.02] transition-all shadow-lg shadow-primary/20">
-                  ADD TO BAG
-                </button>
-              </div>
-              <button className="w-full bg-primary rounded-full py-3 font-bold text-primary-content px-2 hover:scale-[1.02] transition-all shadow-lg shadow-primary/20 cursor-pointer ">
-                ADD TO WISHLIST
-              </button>
-            </div>
+            <ProductAction price={data.price}/>
             {/* Specs Summary Bento */}
             <div className="grid grid-cols-2 gap-4">
               {/* Free Delivery */}
@@ -244,7 +216,7 @@ export default async function ProductDetail({ params }) {
         About this Product
       </h3>
       <p className="text-xs text-outlined leading-relaxed opacity-80">
-        Material {data?.description?.split(' ').slice(0, 8).join(' ')} blend with timeless design. The intricate pattern ensures a versatile look.
+        {data?.description} 
       </p>
     </div>
 

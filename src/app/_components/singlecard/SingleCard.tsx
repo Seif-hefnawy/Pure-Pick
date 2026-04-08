@@ -6,7 +6,7 @@ import Link from "next/link";
 
 
 
-export default async function SingleCard({currentProduct}) {
+export default async function SingleCard({currentProduct} : {currentProduct : any}) {
   
  
 
