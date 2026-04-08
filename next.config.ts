@@ -1,18 +1,19 @@
-import type { NextConfig } from "next";
+import { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  output: 'export', 
   reactCompiler: true,
   images: {
-    unoptimized: true, 
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'ecommerce.routemisr.com',
         pathname: '/**',
       },
+      {
+        protocol: 'http', // ضيفنا ده كمان احتياطي
+        hostname: 'ecommerce.routemisr.com',
+        pathname: '/**',
+      },
     ],
   },
 };
-
