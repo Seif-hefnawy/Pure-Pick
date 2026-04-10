@@ -12,6 +12,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import ProductAction from "./ProductAction";
+import { getRelatedProducts } from "@/app/api/RelatedProducts";
+import SingleCard from "@/app/_components/singlecard/SingleCard";
 
 
 
@@ -21,8 +23,10 @@ export default async function ProductDetail({ params } : {params : any}) {
   const response = await fetch(
     `https://ecommerce.routemisr.com/api/v1/products/${id}`,
   );
+  
   const { data } = await response.json();
   console.log("detailll", data);
+  const relatedProducts = await getRelatedProducts(data.category._id);
   return (
     <>
       <section className="pt-24 pb-20">
@@ -87,12 +91,12 @@ export default async function ProductDetail({ params } : {params : any}) {
             <div className="space-y-2 mb-6">
               <div className="flex flex-wrap gap-2 mb-4">
                 <Link
-                  className="bg-primary text-white text-xs px-3 pt-1 center rounded-full hover:bg-emerald-700 transition "
+                  className="bg-primary text-white text-xs py-1 px-2 center rounded-full hover:bg-emerald-700 transition "
                   href={"categories/women"}
                 >
                   {data.category.name}
                 </Link>
-                .
+                
                 <span className="bg-primary text-white rounded-full text-xs px-3 pt-1">
                   {data.brand.name}
                 </span>
@@ -272,104 +276,35 @@ export default async function ProductDetail({ params } : {params : any}) {
 
     </div>
   </div>
-</div>
+          </div>
         {/* Related Items (Electronics) */}
-        <section className="max-w-7xl mx-auto px-8 py-24">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <span className="text-[10px] font-extrabold uppercase tracking-[0.3em] text-primary">
-                Complete the Set
-              </span>
-              <h3 className="text-3xl font-black tracking-tighter text-on-surface">
-                Electronics Favorites
-              </h3>
-            </div>
-            <a
-              className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors"
-              href="#"
-            >
-              View All
-            </a>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Related Product 1 */}
-            <div className="group">
-              <div className="aspect-[4/5] bg-surface-container rounded-xl overflow-hidden mb-4 relative transition-all group-hover:shadow-xl group-hover:shadow-primary/5">
-                <img
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  data-alt="Premium wireless noise-cancelling headphones in matte charcoal sitting on a minimalist wooden desk"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkWiX0k4uYeXyAbFQLp0gMHkp6YvOTeUXV8KZ3POjPp0lAZBymC6Y1iJVDqrFcuv1ZHArNUZ0kDzw6RHKhAlp7HPZYzi6lEKzOieTg7BYrVGc4SykZlYRqO1_fGJ10LvyzpVzD_qj_LAMJ8igGGLE0yk5ehNZK41q0bFzG0k2RLatUhR1IfR-JcuAn6RrRNvX_0leTF0E5swiAjHdIaBN_NE3zk2TZ-b-JD_m3-_CI_GENig7LqpQFKgigKDkqiGw27DeH98GG8R0W"
-                />
-                <button className="absolute bottom-4 right-4 bg-on-surface text-surface w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="material-symbols-outlined" data-icon="add">
-                    add
-                  </span>
-                </button>
-              </div>
-              <h4 className="text-sm font-bold text-on-surface">
-                Sonic Aurum Pro
-              </h4>
-              <p className="text-xs text-outline">$349.00</p>
-            </div>
-            {/* Related Product 2 */}
-            <div className="group">
-              <div className="aspect-[4/5] bg-surface-container rounded-xl overflow-hidden mb-4 relative transition-all group-hover:shadow-xl group-hover:shadow-primary/5">
-                <img
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  data-alt="Minimalist luxury smartwatch with leather strap on a clean light background highlighting the classic face design"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxsDDDBWjRfpyxYOSNBRx7KcbZB-ywV6LbpCdWwWdl5NmmIjjOhA0DEHmbbHY663a87tcrno8YdF-E0iGJNwzvFYFr-YyBO5IvyvUy6BvIzY24lokwd_jB_O8pdbpavzfUsf2yLe9UFzN_xh63sAS6BRDwxH9bQw4-oVrDBSmK4BJoteW9G4v-JyqTWOPMc1-YvP-iHdq4Ih3PSzNLRBqZ9thZG8_qK0cTUpHETVKZLg1qi_i_8p8_5nXgmBDFHykgH5ZcV9trj8zR"
-                />
-                <button className="absolute bottom-4 right-4 bg-on-surface text-surface w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="material-symbols-outlined" data-icon="add">
-                    add
-                  </span>
-                </button>
-              </div>
-              <h4 className="text-sm font-bold text-on-surface">
-                Aeon Chronos Series
-              </h4>
-              <p className="text-xs text-outline">$499.00</p>
-            </div>
-            {/* Related Product 3 */}
-            <div className="group">
-              <div className="aspect-[4/5] bg-surface-container rounded-xl overflow-hidden mb-4 relative transition-all group-hover:shadow-xl group-hover:shadow-primary/5">
-                <img
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  data-alt="High-fidelity wireless earbuds and their charging case resting on a textured fabric surface with dramatic shadows"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3QEUmRFT8aCToorU8zJACryKXFhf-8Eas92dYOIc-iD9yNYKwl5icvNe3yNc0Sh0yse_6cWOyTeufEc8w_7G-hwSw7ngyKh1-sUjT6vTcHyVRRwcGFMCRwNzFNV9d5C2iOnqxqSc2WKNf07gpGBVHiWTOCxxPPxtaQ3wkDXGxQYcu2GFenE3qvWHdNdOhy1O46uO-s3v9udivJUt-f16oNLdyn774SfB37MFgn-BAcBkENHbRMCS_mg_iXdCFnR_fv966_-EvKMHh"
-                />
-                <button className="absolute bottom-4 right-4 bg-on-surface text-surface w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="material-symbols-outlined" data-icon="add">
-                    add
-                  </span>
-                </button>
-              </div>
-              <h4 className="text-sm font-bold text-on-surface">
-                Iris Buds Pure
-              </h4>
-              <p className="text-xs text-outline">$199.00</p>
-            </div>
-            {/* Related Product 4 */}
-            <div className="group">
-              <div className="aspect-[4/5] bg-surface-container rounded-xl overflow-hidden mb-4 relative transition-all group-hover:shadow-xl group-hover:shadow-primary/5">
-                <img
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  data-alt="Sleek ultra-slim laptop open on a modern desk with artistic wallpapers visible on the crisp display"
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAltRta8FUVUM-PNYCv09YU7TD0IOopil7ZcD8vij0cLK5S7IaPJLwwSfrAf2vUL7ZCQwl5TdQgtSu8i5cIi_1wZ-zGg_UzimQbIk1kPORT4F4VxxtzQtLyuGlOYf4AjU_ffQ8csYiutRoWZP_NgW1GDNL0XDWlzGG_JAyhFiUtN3X3Fnl3HGJ_Lgi_DBlgwahKwZ0nFAe2gOhX3WxyyJ1Ulk87sgD67sejZiBD0DEe7znjGbcT2CHdKyYGUBKjHvb7R4KfMNm5-lbR"
-                />
-                <button className="absolute bottom-4 right-4 bg-on-surface text-surface w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="material-symbols-outlined" data-icon="add">
-                    add
-                  </span>
-                </button>
-              </div>
-              <h4 className="text-sm font-bold text-on-surface">
-                Lumina Air M2
-              </h4>
-              <p className="text-xs text-outline">$1,499.00</p>
-            </div>
-          </div>
-        </section>
+        <div className="max-w-7xl mx-auto px-8 py-24">
+  {/* الهيدر بتاع السكشن */}
+  <div className="flex justify-between items-end mb-12">
+    <div>
+      <h3 className="text-3xl font-black tracking-tighter text-on-surface">
+        You May Also <span className="text-primary">Like</span>
+      </h3>
+    </div>
+    <Link
+      className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors"
+      href={`/categories/women`} 
+    >
+      View All
+    </Link>
+  </div>
+
+  {/* الـ Grid اللي هيشيل السنجل كاردس */}
+ <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 ">
+  {relatedProducts?.slice(0, 4).map((item: any) => (
+    /* ضيفنا div هنا عشان نعزل الـ Card ونجبره يترص صح */
+    <div key={item._id} className="w-full  flex flex-col group cursor-pointer  md:w-full shrink-0 snap-center h-fit bg-surface rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]
+                hover:shadow-xl transition-all duration-300"> 
+      <SingleCard currentProduct={item} />
+    </div>
+  ))}
+</div>
+</div>
       </section>
     </>
   );
