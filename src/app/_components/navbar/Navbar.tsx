@@ -41,7 +41,7 @@ export default function Navbar() {
             <div className="text-xl md:text-2xl font-black tracking-tighter text-primary">
               PurePick
             </div>
-            <div className="hidden sm:block">
+            <div>
               <ThemeToggle />
             </div>
           </div>

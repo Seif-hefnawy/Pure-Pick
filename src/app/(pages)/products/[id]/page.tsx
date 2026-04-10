@@ -64,6 +64,7 @@ export default async function ProductDetail({ params } : {params : any}) {
                   className="object-contain group-hover:scale-105 transition-transform duration-700"
                   priority // عشان دي أول صورة وأهم صورة في الـ LCP
                   sizes="(max-width: 1024px) 100vw, 60vw"
+                  unoptimized
                 />
               </div>
               <div className="relative aspect-4/5 bg-surface-container rounded-xl overflow-hidden group">
@@ -73,6 +74,7 @@ export default async function ProductDetail({ params } : {params : any}) {
                   fill
                   className="object-fit group-hover:scale-105 transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 60vw"
+                  unoptimized
                 />
               </div>
               <div className="relative aspect-4/5 bg-surface-container rounded-xl overflow-hidden group">
@@ -82,6 +84,7 @@ export default async function ProductDetail({ params } : {params : any}) {
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   sizes="(max-width: 1024px) 100vw, 60vw"
+                  unoptimized
                 />
               </div>
             </div>
@@ -295,7 +298,7 @@ export default async function ProductDetail({ params } : {params : any}) {
   </div>
 
   {/* الـ Grid اللي هيشيل السنجل كاردس */}
- <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 ">
+ <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 ">
   {relatedProducts?.slice(0, 4).map((item: any) => (
     /* ضيفنا div هنا عشان نعزل الـ Card ونجبره يترص صح */
     <div key={item._id} className="w-full  flex flex-col group cursor-pointer  md:w-full shrink-0 snap-center h-fit bg-surface rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]

@@ -1,3 +1,4 @@
+import DynamicSectionHeader from '@/app/_components/pageheader/DynamicSectionHeader'
 import Image from 'next/image'
 import React from 'react'
 export default function CategoriesPage() {
@@ -6,20 +7,13 @@ export default function CategoriesPage() {
 
   
   return <>
-  
-  <section className="py-24 px-6 md:px-8 max-w-screen-2xl mx-auto">
+   <DynamicSectionHeader title="" subtitle="Categories"/>
+  <section className="py-15 px-6 md:px-8 max-w-screen-2xl mx-auto">
+   
   {/* هيدر السيكشن المتظبط */}
-  <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
-    <div className="space-y-1 w-full md:w-auto text-left">
-      <p className="text-primary text-[10px] md:text-xs font-bold tracking-[0.2em] uppercase">
-        Explore Departments
-      </p>
-      <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-on-surface">
-        Categories
-      </h3>
-    </div>
+  
     
-  </div>
+  
 
   {/* جريد الأقسام */}
   <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-10">

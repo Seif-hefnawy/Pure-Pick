@@ -49,7 +49,7 @@ export default async function SingleCard({
           {currentProduct?.category.name}
         </p>
 
-        <h3 className="font-bold text-base text-on-surface/80 dark:text-stone-500 group-hover:text-emerald-800 dark:group-hover:text-emerald-800 transition-colors line-clamp-1">
+        <h3 className="font-bold text-base text-on-surface/80  group-hover:text-emerald-800 dark:group-hover:text-emerald-800 transition-colors line-clamp-1">
           {currentProduct.title}
         </h3>
         <div className="flex items-center gap-0.5 mt-1">
@@ -61,7 +61,7 @@ export default async function SingleCard({
         ${
           i < Math.floor(currentProduct.ratingsAverage || 0)
             ? "fill-amber-400 text-amber-400"
-            : "fill-transparent text-stone-300"
+            : "fill-transparent text-stone-400"
         }`}
             />
           ))}
