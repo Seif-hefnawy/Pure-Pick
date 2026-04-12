@@ -7,7 +7,7 @@ export default function CategoriesPage() {
 
   
   return <>
-   <DynamicSectionHeader title="" subtitle="Categories"/>
+  
   <section className="py-15 px-6 md:px-8 max-w-screen-2xl mx-auto">
    
   {/* هيدر السيكشن المتظبط */}

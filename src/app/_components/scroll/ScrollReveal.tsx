@@ -17,31 +17,32 @@ export default function ScrollReveal({
   children, 
   delay = 0, 
   direction = "fade-up", 
-  className = "" 
+  className = "will-change-transform" 
 }: Props) {
   
   // تعريف الحركات بناءً على الـ direction
   const variants = {
-    hidden: {
-      opacity: 0,
-      y: direction === "fade-up" ? 10 : direction === "fade-down" ? -10 : 0,
-      x: direction === "fade-left" ? 10 : direction === "fade-right" ? -10 : 0,
-      scale: direction === "zoom-in" ? 0.9 : 1,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      x: 0,
-      scale: 1,
-    },
-  };
+  hidden: { 
+    opacity: 0, 
+    y: 10, // قلل القيمة دي لـ 10 بدل 20 أو 50
+    transition: { duration: 0.3 } 
+  },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.4, 
+      ease: "easeOut" 
+    } 
+  }
+};
 
   return (
     <motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false , margin: "0px" , amount : 0.1}}
-      variants={variants}
+      // variants={variants}
       transition={{ 
         duration: 0.3, 
         delay: delay, 
