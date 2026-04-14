@@ -13,7 +13,7 @@ interface Props {
 
 export default function DynamicSectionHeader({ title, subtitle, className = "", Icon = Package }: Props) {
   return (
-    <div className={`container mx-auto px-6 md:px-12 mb-10 mt-20 flex items-center gap-6 ${className}`}>
+    <div className={`container mx-auto px-6 md:px-12  mt-5 flex items-center gap-6 ${className}`}>
       
       {/* 1. المربع الملون اللي شايل الأيقونة */}
       <div className="p-4 rounded-3xl bg-primary/20 text-primary flex-shrink-0">
@@ -24,8 +24,8 @@ export default function DynamicSectionHeader({ title, subtitle, className = "", 
       <div className="space-y-1">
         <h3 className="text-3xl md:text-4xl font-black tracking-tighter">
           {/* العنوان مقسوم لملون وعادي */}
-          <span className="text-primary">{title}</span>{" "}
-          <span className="text-on-surface">{subtitle}</span>
+          <span className="text-on-surface">{title}</span>{" "}
+          <span className="text-primary">{subtitle}</span>
         </h3>
         
         {/* اختياري: خط رفيع تحت العنوان يزود الشياكة والـ البراند */}

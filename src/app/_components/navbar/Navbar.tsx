@@ -26,7 +26,7 @@ export default function Navbar() {
   return (
     <>
       {/* --- Desktop & Mobile Header --- */}
-      <nav className="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline shadow-sm dark:shadow-none transition-colors duration-300">
+      <nav className="sticky top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline shadow-sm dark:shadow-none transition-colors duration-300">
         <div className="flex justify-between items-center px-4 md:px-8 h-20 max-w-screen-2xl mx-auto gap-4">
           
           {/* الجانب الأيمن: المنيو (موبايل) واللوجو */}
@@ -92,14 +92,14 @@ export default function Navbar() {
 
       {/* السايد بار نفسه */}
       <aside className={`
-        fixed top-0 left-0 h-full w-80 bg-surface z-70 shadow-2xl transition-transform duration-300 ease-in-out p-6 flex flex-col gap-6
+        fixed top-0 left-0 h-full w-80 bg-surface z-70 shadow-2xl transition-transform duration-300 ease-in-out p-6 flex flex-col gap-6 
         ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
       `}>
         
         {/* هيدر السايد بار */}
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2 text-primary font-black text-xl tracking-tighter">
-            Fresh Cart
+             PurePick
           </div>
           <button 
             onClick={() => setIsSidebarOpen(false)}
@@ -124,8 +124,8 @@ export default function Navbar() {
         {/* لينكات الموبايل */}
         <nav className="flex flex-col gap-5 font-body font-semibold text-on-surface/80">
           <Link href="/" onClick={() => setIsSidebarOpen(false)} className="hover:text-primary transition-colors border-b border-outline pb-2">Home</Link>
-          <Link href="/shop" onClick={() => setIsSidebarOpen(false)} className="hover:text-primary transition-colors border-b border-outline pb-2">Shop</Link>
-          <div className="border-b border-outline pb-2 ">
+          <Link href="/products" onClick={() => setIsSidebarOpen(false)} className="hover:text-primary transition-colors border-b border-outline pb-2">Shop</Link>
+          <div className="border-b border-outline pb-2  ">
             <CategoriesDropdown isActive={['/men', '/women', '/beauty', '/electronics', '/categories'].includes(path)} />
           </div>
           <Link href="/brands" onClick={() => setIsSidebarOpen(false)} className="hover:text-primary transition-colors border-b border-outline pb-2">Brands</Link>

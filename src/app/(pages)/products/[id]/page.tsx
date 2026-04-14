@@ -1,6 +1,4 @@
 import {
-  Minus,
-  Plus,
   Star,
   Truck,
   RotateCcw,
@@ -14,42 +12,32 @@ import React from "react";
 import ProductAction from "./ProductAction";
 import { getRelatedProducts } from "@/app/api/RelatedProducts";
 import SingleCard from "@/app/_components/singlecard/SingleCard";
+import Breadcrumbs from "@/app/_components/BreadCrumbs/BreadCrumbs";
 
 
-
-export default async function ProductDetail({ params } : {params : any}) {
+export default async function ProductDetail({ params }: { params: any }) {
   const { id } = await params;
 
   const response = await fetch(
     `https://ecommerce.routemisr.com/api/v1/products/${id}`,
   );
-  
+
   const { data } = await response.json();
-  console.log("detailll", data);
   const relatedProducts = await getRelatedProducts(data.category._id);
   return (
     <>
-      <section className="pt-24 pb-20">
+      <section className="pt-3 ">
         {/* Breadcrumbs */}
-        <div className="max-w-7xl mx-auto px-8 py-6">
-          <nav className="flex text-xs font-medium uppercase tracking-widest text-outline">
-            <Link className="hover:text-primary text-on-surface" href="/">
-              Home
-            </Link>
-            <span className="mx-3">/</span>
-            <Link className="hover:text-primary text-on-surface" href="#">
-              {data.category.name}
-            </Link>
-            <span className="mx-3">/</span>
-            <Link
-              className="hover:text-primary text-on-surface"
-              href="/categories/women"
-            >
-              {data.title}
-            </Link>
-            <span className="mx-3">/</span>
-            <span className="text-primary">{data.title}</span>
-          </nav>
+        <div className="max-w-7xl mx-auto px-8 ">
+          <Breadcrumbs
+            steps={[
+              {
+                label: data.category.name,
+                href: `/categories/${data.category._id}`,
+              },
+              { label: data.title }, // مفيش href عشان دي آخر كلمة
+            ]}
+          />
         </div>
         {/* Product Hero Section */}
         <div className="max-w-7xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-16">
@@ -95,11 +83,11 @@ export default async function ProductDetail({ params } : {params : any}) {
               <div className="flex flex-wrap gap-2 mb-4">
                 <Link
                   className="bg-primary text-white text-xs py-1 px-2 center rounded-full hover:bg-emerald-700 transition "
-                  href={"categories/women"}
+                  href={`/categories/${data.category._id}`}
                 >
                   {data.category.name}
                 </Link>
-                
+
                 <span className="bg-primary text-white rounded-full text-xs px-3 pt-1">
                   {data.brand.name}
                 </span>
@@ -139,7 +127,7 @@ export default async function ProductDetail({ params } : {params : any}) {
             <p className="text-lg text-on-surface font-medium mb-10">
               {data.description}
             </p>
-            <ProductAction price={data.price}/>
+            <ProductAction price={data.price} />
             {/* Specs Summary Bento */}
             <div className="grid grid-cols-2 gap-4">
               {/* Free Delivery */}
@@ -211,103 +199,114 @@ export default async function ProductDetail({ params } : {params : any}) {
               </div>
             </div>
           </div>
-          
         </div>
         {/* Product Specifications Section (Revised) */}
-        <div className="py-12 "> 
-  <div className="max-w-5xl mx-auto px-6 flex flex-col items-center"> {/* إضافة Flex هنا لتوسيط الـ About */}
-    
-    {/* About - متوسّط */}
-    <div className="mb-12 max-w-2xl text-center"> {/* text-center للتوسيط */}
-      <h3 className="text-xl font-bold  text-on-surface mb-3">
-        About this Product
-      </h3>
-      <p className="text-xs text-outlined leading-relaxed opacity-80">
-        {data?.description} 
-      </p>
-    </div>
-
-    {/* الـ Grid: جعلناه mx-auto وزودنا الـ gap */}
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 w-full max-w-4xl mx-auto">
-      
-      {/* Product Information - Compact */}
-      <div className=" p-6 rounded-xl border border-outline-variant/20 shadow-sm h-full">
-        <h4 className="text-sm font-bold text-on-surface mb-6 opacity-90">
-          Product Information
-        </h4>
-        <div className="space-y-4 ">
-          {[
-            { label: "Category", value: data?.category?.name || "Women's Fashion" },
-            { label: "Brand", value: data?.brand?.name || "DeFacto" },
-            { label: "Sold", value: "289+ items" }
-          ].map((item, index) => (
-            <div key={index} className="flex justify-between items-center border-b border-outline-variant/5 pb-3 last:border-0 last:pb-0">
-              <span className="text-[10px] text-on-surface uppercase font-semibold tracking-wider">
-                {item.label}
-              </span>
-              <span className="text-[12px] text-on-surface font-bold">
-                {item.value}
-              </span>
+        <div className="py-10 ">
+          <div className="max-w-5xl mx-auto px-6 flex flex-col items-center">
+            {" "}
+            {/* إضافة Flex هنا لتوسيط الـ About */}
+            {/* About - متوسّط */}
+            <div className="mb-12 max-w-2xl text-center">
+              {" "}
+              {/* text-center للتوسيط */}
+              <h3 className="text-xl font-bold  text-on-surface mb-3">
+                About this Product
+              </h3>
+              <p className="text-xs text-outlined leading-relaxed opacity-80">
+                {data?.description}
+              </p>
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Key Features - Compact */}
-      <div className=" p-6 rounded-xl border border-outline-variant/20 shadow-sm h-full">
-        <h4 className="text-sm font-bold text-on-surface mb-6 opacity-90">
-          Key Features
-        </h4>
-        <ul className="space-y-4">
-          {[
-            "Premium Quality Product",
-            "100% Authentic Guarantee",
-            "Secure Packaging",
-            "Quality Tested"
-          ].map((feature, index) => (
-            <li key={index} className="flex items-center gap-3">
-              <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center">
-                <Check size={12} className="text-emerald-500" strokeWidth={3} />
+            {/* الـ Grid: جعلناه mx-auto وزودنا الـ gap */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 w-full max-w-4xl mx-auto">
+              {/* Product Information - Compact */}
+              <div className=" p-6 rounded-xl border border-outline-variant/20 shadow-sm h-full">
+                <h4 className="text-sm font-bold text-on-surface mb-6 opacity-90">
+                  Product Information
+                </h4>
+                <div className="space-y-4 ">
+                  {[
+                    {
+                      label: "Category",
+                      value: data?.category?.name || "Women's Fashion",
+                    },
+                    { label: "Brand", value: data?.brand?.name || "DeFacto" },
+                    { label: "Sold", value: "289+ items" },
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex justify-between items-center border-b border-outline-variant/5 pb-3 last:border-0 last:pb-0"
+                    >
+                      <span className="text-[10px] text-on-surface uppercase font-semibold tracking-wider">
+                        {item.label}
+                      </span>
+                      <span className="text-[12px] text-on-surface font-bold">
+                        {item.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <span className="text-[12px] font-medium text-on-surface">
-                {feature}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </div>
 
-    </div>
-  </div>
+              {/* Key Features - Compact */}
+              <div className=" p-6 rounded-xl border border-outline-variant/20 shadow-sm h-full">
+                <h4 className="text-sm font-bold text-on-surface mb-6 opacity-90">
+                  Key Features
+                </h4>
+                <ul className="space-y-4">
+                  {[
+                    "Premium Quality Product",
+                    "100% Authentic Guarantee",
+                    "Secure Packaging",
+                    "Quality Tested",
+                  ].map((feature, index) => (
+                    <li key={index} className="flex items-center gap-3">
+                      <div className="shrink-0 w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center">
+                        <Check
+                          size={12}
+                          className="text-emerald-500"
+                          strokeWidth={3}
+                        />
+                      </div>
+                      <span className="text-[12px] font-medium text-on-surface">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
+        </div>
         {/* Related Items (Electronics) */}
-        <div className="max-w-7xl mx-auto px-8 py-24">
-  {/* الهيدر بتاع السكشن */}
-  <div className="flex justify-between items-end mb-12">
-    <div>
-      <h3 className="text-3xl font-black tracking-tighter text-on-surface">
-        You May Also <span className="text-primary">Like</span>
-      </h3>
-    </div>
-    <Link
-      className="text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors"
-      href={`/categories/women`} 
-    >
-      View All
-    </Link>
-  </div>
+        <div className="max-w-7xl mx-auto px-8 py-5">
+          {/* الهيدر بتاع السكشن */}
+          <div className="flex flex-row items-center justify-between mb-8 md:mb-12">
+  <h3 className="text-3xl md:text-5xl font-black tracking-tighter text-on-surface">
+    You May Also <span className="text-primary">Like</span>
+  </h3>
+  
+  <Link
+    className="text-[10px] md:text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors border-b border-primary/20 pb-1 md:border-none"
+    href={`/categories/${data.category._id}`} 
+  >
+    View All
+  </Link>
+</div>
 
-  {/* الـ Grid اللي هيشيل السنجل كاردس */}
- <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 ">
-  {relatedProducts?.slice(0, 4).map((item: any) => (
-    /* ضيفنا div هنا عشان نعزل الـ Card ونجبره يترص صح */
-    <div key={item._id} className="w-full  flex flex-col group cursor-pointer  md:w-full shrink-0 snap-center h-fit bg-surface rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]
-                hover:shadow-xl transition-all duration-300"> 
-      <SingleCard currentProduct={item} />
-    </div>
-  ))}
-</div>
-</div>
+          {/* الـ Grid اللي هيشيل السنجل كاردس */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 ">
+            {relatedProducts?.slice(0, 4).map((item: any) => (
+              /* ضيفنا div هنا عشان نعزل الـ Card ونجبره يترص صح */
+              <div
+                key={item._id}
+                className="w-full  flex flex-col group cursor-pointer  md:w-full shrink-0 snap-center h-fit bg-surface rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]
+                hover:shadow-xl transition-all duration-300"
+              >
+                <SingleCard currentProduct={item} />
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
     </>
   );

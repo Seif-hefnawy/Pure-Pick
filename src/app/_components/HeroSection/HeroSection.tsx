@@ -4,7 +4,7 @@ import React from 'react'
 export default function HeroSection() {
   return <>
   
-  <section className="relative h-[80vh] md:h-217.5 w-full overflow-hidden -low mt-20">
+  <section className="relative h-[80vh] md:h-217.5 w-full overflow-hidden -low  ">
             {/* 1. حاوية الصورة */}
             <div className="absolute inset-0 z-0">
               <Image
@@ -13,7 +13,7 @@ export default function HeroSection() {
                 fill
                 priority={true}
                 sizes="100vw"
-                className="object-cover object-right md:object-center" // مهم جداً للريسبونسيف
+                className="object-cover object-right md:object-center " // مهم جداً للريسبونسيف
               />
               {/* التدرج اللوني (Gradient) عشان الكلام يظهر بوضوح */}
               <div className="absolute inset-0 bg-linear-to-r from-background via-background/40 md:via-transparent to-transparent" />

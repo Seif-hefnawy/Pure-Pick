@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @plugin "tailwindcss-animate";
+@import 'swiper/css';
+@import 'swiper/css/navigation';
 
 @theme {
   /* Colors */
@@ -138,4 +140,14 @@ body {
     -ms-overflow-style: none !important;  /* IE and Edge */
     scrollbar-width: none !important; /* Firefox */
   }
+}
+
+/* الكلاس ده بيقلد الـ Hover بالظبط */
+.active-card {
+  @apply shadow-2xl scale-105 border-primary;
+}
+
+/* عشان نظهر السلة اللي مستخبية جوه الكارد */
+.active-card .mobile-overlay {
+  @apply opacity-100 translate-y-0;
 }
