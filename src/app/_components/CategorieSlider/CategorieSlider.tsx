@@ -24,7 +24,7 @@ export default function CategorySlider() {
       <Swiper
         modules={[Autoplay, Navigation]}
         spaceBetween={10}
-        slidesPerView={3} // في الموبايل الصغير يبان 3
+        slidesPerView={2} // في الموبايل الصغير يبان 3
         breakpoints={{
           640: { slidesPerView: 4, spaceBetween: 20 },
           1024: { slidesPerView: 6, spaceBetween: 30 },

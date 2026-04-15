@@ -28,14 +28,14 @@ export default async function ProductDetail({ params }: { params: any }) {
     <>
       <section className="pt-3 ">
         {/* Breadcrumbs */}
-        <div className="max-w-7xl mx-auto px-8 ">
+        <div className="max-w-7xl mx-auto px-8  ">
           <Breadcrumbs
             steps={[
               {
                 label: data.category.name,
                 href: `/categories/${data.category._id}`,
               },
-              { label: data.title }, // مفيش href عشان دي آخر كلمة
+              { label: data.title.split(" ").slice(0, 3).join(" ") + "..." }, // مفيش href عشان دي آخر كلمة
             ]}
           />
         </div>
@@ -88,11 +88,11 @@ export default async function ProductDetail({ params }: { params: any }) {
                   {data.category.name}
                 </Link>
 
-                <span className="bg-primary text-white rounded-full text-xs px-3 pt-1">
+                <span className="bg-primary text-white rounded-full text-xs  px-3 pt-1">
                   {data.brand.name}
                 </span>
               </div>
-              <h1 className="text-5xl font-black tracking-tighter text-on-surface leading-none">
+              <h1 className="text-5xl font-black truncate tracking-tighter text-on-surface leading-none">
                 {data.title}
               </h1>
             </div>
@@ -124,7 +124,7 @@ export default async function ProductDetail({ params }: { params: any }) {
                 +{data.quantity} Avaialable
               </p>
             </div>
-            <p className="text-lg text-on-surface font-medium mb-10">
+            <p className="text-lg text-on-surface font-medium mb-10 line-clamp-3">
               {data.description}
             </p>
             <ProductAction price={data.price} />
