@@ -281,7 +281,7 @@ export default async function ProductDetail({ params }: { params: any }) {
         <div className="max-w-7xl mx-auto px-8 py-5">
           {/* الهيدر بتاع السكشن */}
           <div className="flex flex-row items-center justify-between mb-8 md:mb-12">
-  <h3 className="text-3xl md:text-5xl font-black tracking-tighter text-on-surface">
+  <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-on-surface">
     You May Also <span className="text-primary">Like</span>
   </h3>
   
