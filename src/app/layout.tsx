@@ -4,6 +4,7 @@ import { ThemeProvider } from "./_components/theme-mode/ThemeProvider";
 import Navbar from "./_components/navbar/Navbar";
 import GlobalLoading from "./_components/loading/GlobalLoading";
 import Footer from "./_components/footer/footer";
+import ToasterProvider from "./_components/toast/ToasterProvider";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -20,6 +21,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Navbar/>
             <main className="flex-1">
               {children}
+              <ToasterProvider />
+              
               <Footer/>
             </main>
           </div>

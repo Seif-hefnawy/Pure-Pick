@@ -19,7 +19,7 @@ export default function Register() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        <div className="absolute inset-0 bg-stone-950/85 md:bg-linear-to-r md:from-stone-950 md:via-stone-950/30 md:to-transparent" />
+        <div className="absolute inset-0 bg-stone-950/85 md:bg-linear-to-r md:from-stone-950 md:via-stone-950/30 lg: md:to-transparent" />
       </div>
 
       {/* 2. المحتوى الرئيسي */}

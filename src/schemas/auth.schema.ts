@@ -30,3 +30,35 @@ export const RegisterSchema = z.object({
   path: ['rePassword'], 
   message: "Passwords do not match", // غيرنا error لـ message ✅
 });
+
+
+export type RegisterSchemaType = z.infer< typeof RegisterSchema >
+
+///////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+export const LoginSchema = z.object({
+    
+
+
+    email : z.string()
+    .nonempty('Email is Required')
+    .email('invalid email'),
+
+    password:z.string()
+    .nonempty('Password is Required')
+    .min(7,'minlength is 7 characters')
+    .max(10,'maxlength is 10 characters'),
+
+    
+
+})
+
+
+export type LoginSchemaType = z.infer< typeof RegisterSchema >
+
+///////////////////////////////////////////////////////////////////////////////////
+
+

@@ -1,13 +1,18 @@
 "use client";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-
-import { RegisterSchema } from "@/schemas/auth.schema";
+import { RegisterSchema, RegisterSchemaType } from "@/schemas/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { registerUser } from "@/app/api/register.api";
+import toast from "react-hot-toast";
+import GlobalLoading from "../loading/GlobalLoading";
+import { useRouter } from "next/navigation";
+
 
 export default function RegisterForm() {
-    
+  const router = useRouter();
+    const [isLoading, setIsLoading] = useState(false);
   const form = useForm({
     resolver:zodResolver(RegisterSchema),
     defaultValues: {
@@ -19,10 +24,28 @@ export default function RegisterForm() {
       
     },
   });
-const { register, handleSubmit, formState: { errors } } = form;
-  function handleRegister(data: any) {
-    console.log(data);
+const {  formState: { errors } } = form;
+ async function  handleRegister(data: RegisterSchemaType) {
+    setIsLoading(true)
+toast.dismiss();
+
+ try {
+    const result = await registerUser(data);
+    // نجاح
+    toast.success(`Welcome to PurePick, ${data.name}!`);
+    setTimeout(() => {
+                router.push("/login"); 
+            }, 1500);
+  } catch (error: any) {
+    // فشل
+    toast.error(error.message || "Registration failed");
+  } finally {
+    setIsLoading(false); // 2. وقف اللودينج في الحالتين
   }
+}
+
+
+  
   return (
     <>
       <form onSubmit={form.handleSubmit(handleRegister)}>
@@ -135,11 +158,28 @@ const { register, handleSubmit, formState: { errors } } = form;
         </div>
 
         <button
-          type="submit"
-          className="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg hover:brightness-110 active:scale-[0.98] transition-all text-xs uppercase tracking-widest"
-        >
-          Sign Up Now
-        </button>
+  type="submit"
+  disabled={isLoading} // 3. بيمنع الكليك ويخلي الزرار disabled
+  className={`w-full py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2
+    ${isLoading 
+      ? "bg-stone-700 cursor-not-allowed opacity-80" // 4. شكل الزرار والماوس وقت اللودينج
+      : "bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
+    }`}
+>
+  {isLoading ? (
+    <>
+      {/* الحاوية دي هي اللي هتحجم اللودينج بتاعك بالعافية */}
+      <div className="relative w-6 h-6 overflow-hidden flex items-center justify-center">
+        <div className="scale-[0.2] transform origin-center"> 
+            <GlobalLoading />
+        </div>
+      </div>
+      <span className="ml-2">Processing...</span>
+    </>
+  ) : (
+    "SIGN UP NOW"
+  )}
+</button>
 
         {/* Divider */}
         <div className="relative flex items-center py-2">
