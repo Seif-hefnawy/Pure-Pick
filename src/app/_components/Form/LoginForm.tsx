@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { LoginSchema, LoginSchemaType } from "@/schemas/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-
 import toast from "react-hot-toast";
 import GlobalLoading from "../loading/GlobalLoading";
 import { loginrUser } from "@/app/api/login.api";
@@ -23,30 +22,29 @@ export default function LoginForm() {
   const {
     formState: { errors },
   } = form;
-  async function handleRegister(data: LoginSchemaType) {
+  async function handleLogin(data: LoginSchemaType) {
     setIsLoading(true);
     toast.dismiss();
 
     try {
       const result = await loginrUser(data);
-      // نجاح
       toast.success(`Welcome to PurePick!`);
       setTimeout(() => {
                 router.push("/"); 
             }, 1500);
-      // هنا ممكن تعمل Redirect بعد النجاح
+            console.log(result);
+            
     } catch (error: any) {
-      // فشل
       toast.error(error.message || "Login failed");
     } finally {
-      setIsLoading(false); // 2. وقف اللودينج في الحالتين
+      setIsLoading(false); 
     }
     
   }
 
   return (
     <>
-      <form onSubmit={form.handleSubmit(handleRegister)}>
+      <form onSubmit={form.handleSubmit(handleLogin)}>
         {/* Inputs Group */}
         <div className="space-y-9">
           <div className="flex flex-col gap-1">

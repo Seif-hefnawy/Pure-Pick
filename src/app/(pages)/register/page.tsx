@@ -2,6 +2,7 @@ import Image from "next/image";
 import { ShieldCheck, Truck, Star, BadgeCheck, User } from "lucide-react"; // استيراد أيقونات Lucide
 
 import RegisterForm from "@/app/_components/Form/RegisterForm";
+import Link from "next/link";
 
 
 
@@ -104,7 +105,7 @@ export default function Register() {
                       <Star
                         key={i}
                         size={10}
-                        className="md:w-[12px]"
+                        className="md:w-3"
                         fill="currentColor"
                       />
                     ))}
@@ -132,7 +133,7 @@ export default function Register() {
     <RegisterForm/>
     
     <p className="mt-6 text-center text-[11px] text-stone-500">
-      Already have an account? <span className="text-white font-bold hover:text-primary cursor-pointer transition-colors ml-1">Log In</span>
+      Already have an account? <Link href={"/login"}><span className="text-primary font-bold hover:text-primary cursor-pointer transition-colors ml-1">Log In</span></Link>
     </p>
   </div>
 </section>

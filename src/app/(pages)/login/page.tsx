@@ -1,5 +1,5 @@
 import LoginForm from '@/app/_components/Form/LoginForm'
-import { BadgeCheck, Clock, ShieldCheck, Star, Truck, User } from 'lucide-react'
+import { Clock, ShieldCheck, Truck, } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -25,14 +25,15 @@ export default function Login() {
         <div className="relative z-10 flex min-h-screen flex-col md:flex-row items-center justify-center px-6 md:px-20 py-12 md:py-0 gap-10 md:gap-24">
           {/* الجانب الأيسر: نفس تفاصيل الصورة (FreshCart Style) */}
           <section className="w-full md:w-1/2 flex flex-col items-center text-center">
-  <div className="max-w-2xl w-full bg-white dark:bg-stone-900/40 rounded-[32px] overflow-hidden shadow-2xl border border-white/10 p-6 md:p-8">
+  <div className="max-w-2xl w-full bg-white dark:bg-stone-900/40 rounded-4x1 overflow-hidden shadow-2xl border border-white/10 p-6 md:p-8">
     
     {/* 1. صورة عربة التسوق الكبيرة - زي الصورة بالظبط */}
-    <div className="relative w-full aspect-[16/10] mb-8 rounded-2xl overflow-hidden bg-stone-50 flex items-center justify-center">
+    <div className="relative w-full aspect-16/10 mb-8 rounded-2xl overflow-hidden bg-stone-50 flex items-center justify-center">
       <Image
         src="/FreshCartImage.png" 
         alt="Fresh Products"
         fill
+        loading='lazy'
         className="object-cover"
       />
       {/* الورقة الخضراء اللي في الركن */}

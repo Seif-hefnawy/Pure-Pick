@@ -14,7 +14,6 @@ import { getRelatedProducts } from "@/app/api/RelatedProducts";
 import SingleCard from "@/app/_components/singlecard/SingleCard";
 import Breadcrumbs from "@/app/_components/BreadCrumbs/BreadCrumbs";
 
-
 export default async function ProductDetail({ params }: { params: any }) {
   const { id } = await params;
 
@@ -35,7 +34,7 @@ export default async function ProductDetail({ params }: { params: any }) {
                 label: data.category.name,
                 href: `/categories/${data.category._id}`,
               },
-              { label: data.title.split(" ").slice(0, 3).join(" ") + "..." }, // مفيش href عشان دي آخر كلمة
+              { label: data.title.split(" ").slice(0, 3).join(" ") + "..." },
             ]}
           />
         </div>
@@ -48,9 +47,9 @@ export default async function ProductDetail({ params }: { params: any }) {
                 <Image
                   src={data.imageCover}
                   alt="Premium smartphone description"
-                  fill // بتخلي الصورة تملا الـ div الأب
+                  fill
                   className="object-contain group-hover:scale-105 transition-transform duration-700"
-                  priority // عشان دي أول صورة وأهم صورة في الـ LCP
+                  priority
                   sizes="(max-width: 1024px) 100vw, 60vw"
                   unoptimized
                 />
@@ -281,17 +280,17 @@ export default async function ProductDetail({ params }: { params: any }) {
         <div className="max-w-7xl mx-auto px-8 py-5">
           {/* الهيدر بتاع السكشن */}
           <div className="flex flex-row items-center justify-between mb-8 md:mb-12">
-  <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-on-surface">
-    You May Also <span className="text-primary">Like</span>
-  </h3>
-  
-  <Link
-    className="text-[10px] md:text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors border-b border-primary/20 pb-1 md:border-none"
-    href={`/categories/${data.category._id}`} 
-  >
-    View All
-  </Link>
-</div>
+            <h3 className="text-3xl md:text-4xl font-black tracking-tighter text-on-surface">
+              You May Also <span className="text-primary">Like</span>
+            </h3>
+
+            <Link
+              className="text-[10px] md:text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors border-b border-primary/20 pb-1 md:border-none"
+              href={`/categories/${data.category._id}`}
+            >
+              View All
+            </Link>
+          </div>
 
           {/* الـ Grid اللي هيشيل السنجل كاردس */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 ">
