@@ -10,7 +10,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import ProductAction from "./ProductAction";
-import { getRelatedProducts } from "@/app/api/RelatedProducts";
+import { getRelatedProducts } from "@/api/RelatedProducts";
 import SingleCard from "@/app/_components/singlecard/SingleCard";
 import Breadcrumbs from "@/app/_components/BreadCrumbs/BreadCrumbs";
 

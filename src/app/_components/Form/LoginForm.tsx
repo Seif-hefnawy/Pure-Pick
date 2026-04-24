@@ -6,10 +6,10 @@ import { LoginSchema, LoginSchemaType } from "@/schemas/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
 import GlobalLoading from "../loading/GlobalLoading";
-import { loginrUser } from "@/app/api/login.api";
 import { useRouter } from "next/navigation";
-
+import { signIn } from "next-auth/react";
 export default function LoginForm() {
+  
     const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const form = useForm({
@@ -22,24 +22,37 @@ export default function LoginForm() {
   const {
     formState: { errors },
   } = form;
+ 
   async function handleLogin(data: LoginSchemaType) {
     setIsLoading(true);
     toast.dismiss();
 
     try {
-      const result = await loginrUser(data);
-      toast.success(`Welcome to PurePick!`);
-      setTimeout(() => {
-                router.push("/"); 
-            }, 1500);
-            console.log(result);
-            
+      const result = await signIn("credentials", {
+        email: data.email,
+        password: data.password,
+        redirect: false, // عشان نتحكم في الـ Navigation بنفسنا ونظهر التوست
+      });
+
+      if (result?.error) {
+        // لو NextAuth رجع error (يعني الـ authorize رجعت null)
+        toast.error("Invalid email or password");
+        setIsLoading(false);
+      } else {
+        // لو نجح
+        toast.success(`Welcome back to PurePick!`);
+        router.refresh();
+        
+        // NextAuth بيعمل تحديث للـ session أوتوماتيك
+        setTimeout(() => {
+          router.push("/");
+          // router.refresh(); // حركة صايعة عشان يخلي النافبار يحس بالتغيير فوراً
+        }, 1000);
+      }
     } catch (error: any) {
-      toast.error(error.message || "Login failed");
-    } finally {
-      setIsLoading(false); 
+      toast.error("Something went wrong");
+      setIsLoading(false);
     }
-    
   }
 
   return (

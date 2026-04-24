@@ -1,5 +1,5 @@
 import SingleCard from "@/app/_components/singlecard/SingleCard";
-import { getAllProducts } from "@/app/api/Allproduct.api";
+import { getAllProducts } from "@/api/Allproduct.api";
 
 export default async function BrandDetailsPage({ 
   params 

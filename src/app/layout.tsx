@@ -5,6 +5,8 @@ import Navbar from "./_components/navbar/Navbar";
 import GlobalLoading from "./_components/loading/GlobalLoading";
 import Footer from "./_components/footer/footer";
 import ToasterProvider from "./_components/toast/ToasterProvider";
+import Providers from "./_components/providers/Providers";
+
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -16,16 +18,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning> 
       <body suppressHydrationWarning={true} className={`${manrope.variable} antialiased bg-background text-on-surface font-body selection:bg-primary/30 selection:text-primary`}>
         <ThemeProvider>
-          <GlobalLoading/>
+          <Providers>
+            <GlobalLoading/>
           <div className="flex flex-col min-h-screen">
             <Navbar/>
             <main className="flex-1">
-              {children}
+                {children}
               <ToasterProvider />
-              
               <Footer/>
             </main>
           </div>
+          </Providers>
         </ThemeProvider>
       </body>
     </html>

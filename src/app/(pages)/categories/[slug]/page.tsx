@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link"; // متنساش تعمل import للينك
 import SingleCard from "@/app/_components/singlecard/SingleCard";
-import { getAllProducts } from "@/app/api/Allproduct.api";
+import { getAllProducts } from "@/api/Allproduct.api";
 import DynamicSectionHeader from "@/app/_components/pageheader/DynamicSectionHeader";
 import Breadcrumbs from "./../../../_components/BreadCrumbs/BreadCrumbs";
 

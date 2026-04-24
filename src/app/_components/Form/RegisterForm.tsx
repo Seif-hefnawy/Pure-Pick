@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { RegisterSchema, RegisterSchemaType } from "@/schemas/auth.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { registerUser } from "@/app/api/register.api";
+import { registerUser } from "@/api/register.api";
 import toast from "react-hot-toast";
 import GlobalLoading from "../loading/GlobalLoading";
 import { useRouter } from "next/navigation";

@@ -1,7 +1,7 @@
 // app/brands/page.tsx
 import Link from 'next/link';
 import Image from 'next/image';
-import { getBrands } from '@/app/api/Brand.api';
+import { getBrands } from '@/api/Brand.api';
 import DynamicSectionHeader from '@/app/_components/pageheader/DynamicSectionHeader';
 
 

@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
 import Image from "next/image";
 import Link from "next/link";
-import { getCategorie } from "@/app/api/Categorie.api";
+import { getCategorie } from "@/api/Categorie.api";
 import DynamicSectionHeader from './../pageheader/DynamicSectionHeader';
 
 export default function CategorySlider() {

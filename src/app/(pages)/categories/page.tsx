@@ -1,7 +1,7 @@
 import { CategoryCard } from '@/app/_components/CategorieSlider/CategoryCard';
 import DynamicSectionHeader from '@/app/_components/pageheader/DynamicSectionHeader'
 
-import { getCategorie } from '@/app/api/Categorie.api';
+import { getCategorie } from '@/api/Categorie.api';
 
 // ده الـ Component الصغير اللي تقدر تنقله لملف لوحده وتستخدمه في الهوم
 
