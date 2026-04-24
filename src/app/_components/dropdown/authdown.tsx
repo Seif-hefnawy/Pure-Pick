@@ -29,7 +29,7 @@ export default function Authdown() {
       {/* زرار البروفايل الرئيسي */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-center p-2 hover:bg-white/5 rounded-full transition-all text-white/70 hover:text-primary cursor-pointer"
+        className="flex items-center justify-center p-2 hover:bg-primary/5 rounded-full transition-all text-on-surface hover:text-primary cursor-pointer"
       >
         <User size={22} strokeWidth={1.5} />
       </button>
@@ -42,7 +42,7 @@ export default function Authdown() {
             onClick={() => setIsOpen(false)}
           ></div>
           
-          <div className="absolute right-0 mt-3 w-64 rounded-2xl bg-[#121212] border border-white/10 shadow-2xl z-20 p-2 animate-in fade-in zoom-in duration-200">
+          <div className="absolute -right-5 mt-3 w-48 rounded-2xl bg-[#121212] border border-white/10 shadow-2xl z-20 p-2 animate-in fade-in zoom-in duration-200">
             <div className="flex flex-col gap-1">
               
               {isAuthenticated ? (
@@ -51,6 +51,7 @@ export default function Authdown() {
                   <div className="flex items-center gap-3 p-3 mb-2 border-b border-white/5">
                     <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-primaryfont-bold text-sm border border-emerald-500/20">
                       {user?.name?.charAt(0).toUpperCase() || "U"}
+                      
                     </div>
                     <div className="flex flex-col overflow-hidden">
                       <span className="text-sm font-bold text-white line-clamp-1">
