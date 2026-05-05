@@ -19,9 +19,9 @@ export default function Authdown() {
   const menuItems = [
     { label: 'My Profile', icon: UserCircle, href: '/profile' },
     { label: 'My Orders', icon: Package, href: '/orders' },
-    { label: 'My Addresses', icon: MapPin, href: '/addresses' },
+    { label: 'My Addresses', icon: MapPin, href: '/profile/addresses' },
     { label: 'My Wishlist', icon: Heart, href: '/wishlist' },
-    { label: 'Settings', icon: Settings, href: '/settings' },
+    { label: 'Settings', icon: Settings, href: '/profile/settings' },
   ];
 
   return (

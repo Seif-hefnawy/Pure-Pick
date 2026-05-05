@@ -62,3 +62,17 @@ export type LoginSchemaType = z.infer< typeof LoginSchema >
 ///////////////////////////////////////////////////////////////////////////////////
 
 
+export const ChangePasswordSchema = z.object({
+  currentPassword: z.string().min(1, {
+    message: "Current password is required",
+  }),
+  newPassword: z.string().min(8, {
+    message: "Minimum 8 characters required",
+  }),
+  confirmPassword: z.string().min(1, {
+    message: "Please confirm your new password",
+  }),
+}).refine((data) => data.newPassword === data.confirmPassword, {
+  message: "Passwords don't match",
+  path: ["confirmPassword"], // الخطأ يظهر تحت خانة التأكيد
+});

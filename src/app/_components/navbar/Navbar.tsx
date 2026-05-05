@@ -262,13 +262,13 @@ const [isProfileOpen, setIsProfileOpen] = useState(false);
           <Link href="/orders" onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-3 p-3 text-on-surface/70 hover:text-primary text-sm transition-colors">
              <Package size={18} /> My Orders
           </Link>
-          <Link href="/addresses" onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-3 p-3 text-on-surface/70 hover:text-primary text-sm transition-colors">
+          <Link href="/profile/addresses" onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-3 p-3 text-on-surface/70 hover:text-primary text-sm transition-colors">
              <MapPin size={18} /> My Addresses
           </Link>
           <Link href="/wishlist" onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-3 p-3 text-on-surface/70 hover:text-primary text-sm transition-colors">
              <Heart size={18} /> My Wishlist
           </Link>
-          <Link href="/settings" onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-3 p-3 text-on-surface/70 hover:text-primary text-sm transition-colors">
+          <Link href="/profile/settings" onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-3 p-3 text-on-surface/70 hover:text-primary text-sm transition-colors">
              <Settings size={18} /> Settings
           </Link>
           
