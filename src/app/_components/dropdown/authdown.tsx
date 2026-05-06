@@ -20,7 +20,7 @@ export default function Authdown() {
     { label: 'My Profile', icon: UserCircle, href: '/profile' },
     { label: 'My Orders', icon: Package, href: '/orders' },
     { label: 'My Addresses', icon: MapPin, href: '/profile/addresses' },
-    { label: 'My Wishlist', icon: Heart, href: '/wishlist' },
+    { label: 'My Wishlist', icon: Heart, href: '/profile/wishlist' },
     { label: 'Settings', icon: Settings, href: '/profile/settings' },
   ];
 

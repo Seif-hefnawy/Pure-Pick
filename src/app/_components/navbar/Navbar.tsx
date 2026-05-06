@@ -19,15 +19,15 @@ import ThemeToggle from "../theme-mode/ThemeToggle";
 import CategoriesDropdown from "../dropdown/CategoriesDropdown";
 import Authdown from "../dropdown/authdown";
 import { usePathname } from "next/navigation";
-
 import { useSession, signOut } from "next-auth/react";
+import { useCartStore } from "@/store/useCartStore";
 
 export default function Navbar() {
   const { data: session, status } = useSession();
   const user = session?.user;
 const [isProfileOpen, setIsProfileOpen] = useState(false);
   const path = usePathname();
-
+const cartCount = useCartStore((state) => state.cartCount);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
@@ -111,15 +111,19 @@ const [isProfileOpen, setIsProfileOpen] = useState(false);
 
             {/* الأيقونات الأساسية */}
             <div className="flex items-center gap-3 md:gap-5 border-l border-outline pl-4 md:pl-6">
-              <button className="hidden sm:block text-on-surface/70 hover:text-primary transition-all hover:scale-110">
+              <Link href="/profile/wishlist" className="hidden sm:block text-on-surface/70 hover:text-primary transition-all hover:scale-110">
                 <Heart size={22} strokeWidth={1.5} />
-              </button>
-              <button className="relative text-on-surface/70 hover:text-primary transition-all hover:scale-110">
+              </Link>
+              <Link href="/profile/cart" className="relative text-on-surface/70 hover:text-primary transition-all hover:scale-110">
                 <ShoppingCart size={22} strokeWidth={1.5} />
-                <span className="absolute -top-2 -right-2 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
-                  0
+                {cartCount > 0 && (
+                   <span className="absolute -top-2 -right-2 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                  {cartCount}
                 </span>
-              </button>
+
+                )}
+               
+              </Link>
               <Authdown />
             </div>
           </div>
@@ -265,7 +269,7 @@ const [isProfileOpen, setIsProfileOpen] = useState(false);
           <Link href="/profile/addresses" onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-3 p-3 text-on-surface/70 hover:text-primary text-sm transition-colors">
              <MapPin size={18} /> My Addresses
           </Link>
-          <Link href="/wishlist" onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-3 p-3 text-on-surface/70 hover:text-primary text-sm transition-colors">
+          <Link href="/profile/wishlist" onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-3 p-3 text-on-surface/70 hover:text-primary text-sm transition-colors">
              <Heart size={18} /> My Wishlist
           </Link>
           <Link href="/profile/settings" onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-3 p-3 text-on-surface/70 hover:text-primary text-sm transition-colors">

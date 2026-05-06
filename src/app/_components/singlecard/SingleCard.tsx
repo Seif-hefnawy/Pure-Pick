@@ -4,12 +4,15 @@ import Image from "next/image";
 
 import Link from "next/link";
 import GlobalLoading from "../loading/GlobalLoading";
+import AddToCartButton from "../Cart/AddCartBtn";
 
 export default async function SingleCard({
+  
   currentProduct,
 }: {
   currentProduct: any;
 }) {
+  
   return (
     <>
       <div className="aspect-4/5 relative overflow-hidden rounded-xl mb-4 ">
@@ -39,15 +42,7 @@ export default async function SingleCard({
         </div>
 
         {/* Add to Cart Button (Lucide Icon) */}
-        <button
-          className="absolute bottom-4 right-4 bg-emerald-700 dark:bg-emerald-800 text-white w-10 h-10 rounded-full flex items-center justify-center shadow-lg 
-  max-md:opacity-100 max-md:translate-y-0 max-md:scale-90
-  
-  md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 
-  transition-all duration-300"
-        >
-          <ShoppingCart size={18} />
-        </button>
+        <AddToCartButton productId={currentProduct.id} />
       </div>
 
       <div className="ps-2 pb-2">
