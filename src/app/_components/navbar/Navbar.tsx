@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
   Search,
@@ -21,14 +21,41 @@ import Authdown from "../dropdown/authdown";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { useCartStore } from "@/store/useCartStore";
+import { getUserWishlistApi } from "@/api/wishlist.api";
+import { useWishlistStore } from "@/store/wishlistStore";
 
 export default function Navbar() {
+  
   const { data: session, status } = useSession();
   const user = session?.user;
 const [isProfileOpen, setIsProfileOpen] = useState(false);
   const path = usePathname();
 const cartCount = useCartStore((state) => state.cartCount);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  
+// 1. نادي على الـ Action من الـ Store
+const setWishlist = useWishlistStore((state) => state.setWishlist);
+const wishlistIds = useWishlistStore((state) => state.wishlistIds);
+
+useEffect(() => {
+  const syncWishlist = async () => {
+    if (session?.user?.token) {
+      try {
+        const res = await getUserWishlistApi(session.user.token);
+        if (res.status === "success") {
+          // استخراج الـ IDs من الـ Data اللي راجعة
+          const ids = res.data.map((item: any) => item.id);
+          // 2. تحديث الـ Store بالـ IDs الحقيقية من السيرفر
+          setWishlist(ids);
+        }
+      } catch (error) {
+        console.error("Failed to sync wishlist", error);
+      }
+    }
+  };
+
+  syncWishlist();
+}, [session, setWishlist]); // 3. دلوقتي التنبيه الأحمر هيختفي
 
   return (
     <>
@@ -111,9 +138,17 @@ const cartCount = useCartStore((state) => state.cartCount);
 
             {/* الأيقونات الأساسية */}
             <div className="flex items-center gap-3 md:gap-5 border-l border-outline pl-4 md:pl-6">
-              <Link href="/profile/wishlist" className="hidden sm:block text-on-surface/70 hover:text-primary transition-all hover:scale-110">
-                <Heart size={22} strokeWidth={1.5} />
-              </Link>
+              <Link 
+  href="/profile/wishlist" 
+  className="relative hidden sm:block text-on-surface/70 hover:text-primary transition-all hover:scale-110"
+>
+  <Heart size={22} strokeWidth={1.5} />
+  {wishlistIds.length > 0 && (
+    <span className="absolute -top-2 -right-2 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+      {wishlistIds.length}
+    </span>
+  )}
+</Link>
               <Link href="/profile/cart" className="relative text-on-surface/70 hover:text-primary transition-all hover:scale-110">
                 <ShoppingCart size={22} strokeWidth={1.5} />
                 {cartCount > 0 && (
