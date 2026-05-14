@@ -1,6 +1,5 @@
 "use client";
 import { Heart } from "lucide-react";
-
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 import { addToWishlistApi, removeFromWishlistApi } from "@/api/wishlist.api";

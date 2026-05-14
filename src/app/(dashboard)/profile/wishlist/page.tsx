@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { getUserWishlistApi } from "@/api/wishlist.api";
-import { Heart, ShoppingBag, Loader2 } from "lucide-react";
+import { Heart, ShoppingBag} from "lucide-react";
 import Link from "next/link";
 import SingleCard from "@/app/_components/singlecard/SingleCard";
 import { useWishlistStore } from "@/store/wishlistStore";
@@ -40,12 +40,12 @@ export default function WishlistPage() {
     fetchWishlist();
   }, [session]);
 
-  // 1. دي المنتجات اللي بتظهر فعلياً وبتتأثر بالـ Store
+
   const displayedItems = wishlistItems.filter((product) => 
     wishlistIds.includes(product.id)
   );
 
-  // 2. الحسابات لازم تكون بناءً على الـ displayedItems عشان تتحدث فوراً
+ 
   const totalValue = displayedItems.reduce((acc, item) => acc + item.price, 0);
 
   if (isLoading) {
@@ -54,14 +54,11 @@ export default function WishlistPage() {
     );
   }
 
-  // 3. حالة الـ Empty State بتعتمد على displayedItems
+
   if (displayedItems.length === 0) { 
     return (
       <div className="min-h-[70vh] flex flex-col items-center justify-center px-4 relative overflow-hidden">
-  {/* شكل جمالي في الخلفية (Blurry Circles) */}
   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-50 rounded-full blur-3xl -z-10 opacity-60" />
-
-  {/* الأيقونة داخل حاوية شيك */}
   <div className="relative mb-8">
     <div className="w-24 h-24 bg-white rounded-2xl shadow-xl shadow-neutral-200/50 flex items-center justify-center rotate-12 transition-transform hover:rotate-0 duration-500">
       <Heart 
@@ -70,7 +67,6 @@ export default function WishlistPage() {
         strokeWidth={1.5} 
       />
     </div>
-    {/* أيقونة صغيرة إضافية للزينة */}
     <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-emerald-700 rounded-full flex items-center justify-center text-white shadow-lg">
       <Heart size={14} fill="currentColor" />
     </div>
@@ -83,8 +79,6 @@ export default function WishlistPage() {
   <p className="text-neutral-500 max-w-[320px] text-center mb-10 leading-relaxed">
     Your wishlist is looking a bit lonely. Explore our collection and save the pieces you love!
   </p>
-
-  {/* زرار جذاب */}
   <Link
     href="/"
     className="group relative inline-flex items-center justify-center px-8 py-3 font-semibold text-white transition-all duration-200 bg-emerald-700 rounded-full hover:bg-emerald-800 hover:shadow-lg hover:shadow-emerald-700/30 active:scale-95"

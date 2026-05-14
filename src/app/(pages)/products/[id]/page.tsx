@@ -126,7 +126,7 @@ export default async function ProductDetail({ params }: { params: any }) {
             <p className="text-lg text-on-surface font-medium mb-10 line-clamp-3">
               {data.description}
             </p>
-            <ProductAction price={data.price} />
+            <ProductAction price={data.price} productId={data.id} />
             {/* Specs Summary Bento */}
             <div className="grid grid-cols-2 gap-4">
               {/* Free Delivery */}

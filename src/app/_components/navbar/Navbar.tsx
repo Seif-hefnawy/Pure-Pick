@@ -31,6 +31,7 @@ export default function Navbar() {
 const [isProfileOpen, setIsProfileOpen] = useState(false);
   const path = usePathname();
 const cartCount = useCartStore((state) => state.cartCount);
+const { updateCartCount } = useCartStore();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   
 // 1. نادي على الـ Action من الـ Store
@@ -56,6 +57,11 @@ useEffect(() => {
 
   syncWishlist();
 }, [session, setWishlist]); // 3. دلوقتي التنبيه الأحمر هيختفي
+useEffect(() => {
+  if (session?.user?.token) {
+    updateCartCount(session.user.token);
+  }
+}, [session]);
 
   return (
     <>
@@ -78,7 +84,6 @@ useEffect(() => {
               <ThemeToggle />
             </div>
           </div>
-          {/* المنتصف: السيرش بار (يظهر من أول الـ LG) */}
 
           <div className="hidden lg:flex flex-1 max-w-xl relative items-center">
             <input
@@ -149,7 +154,7 @@ useEffect(() => {
     </span>
   )}
 </Link>
-              <Link href="/profile/cart" className="relative text-on-surface/70 hover:text-primary transition-all hover:scale-110">
+              <Link href="/cart" className="relative text-on-surface/70 hover:text-primary transition-all hover:scale-110">
                 <ShoppingCart size={22} strokeWidth={1.5} />
                 {cartCount > 0 && (
                    <span className="absolute -top-2 -right-2 bg-primary text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
@@ -243,26 +248,41 @@ useEffect(() => {
         {/* Wishlist & Cart (Mobile) */}
         <div className="flex flex-col gap-4 pt-2">
           <Link
-            href="/wishlist"
-            onClick={() => setIsSidebarOpen(false)}
-            className="flex items-center gap-3 text-on-surface/70 font-medium"
-          >
-            <Heart size={20} className="text-red-500" />
-            Wishlist
-          </Link>
+    href="/profile/wishlist"
+    onClick={() => setIsSidebarOpen(false)}
+    className="flex items-center justify-between text-on-surface/70 font-medium group transition-all"
+  >
+    <div className="flex items-center gap-3">
+      
+      <Heart 
+        size={20} 
+        className={`transition-all duration-300 ${wishlistIds.length > 0 ? 'text-primary' : 'text-primary'}`} 
+      />
+      <span>Wishlist</span>
+    </div>
+    
+    {/* العداد بيظهر بس لو فيه منتجات */}
+    {wishlistIds.length > 0 && (
+      <span className="bg-primary text-white text-[10px] min-w-[20px] h-5 px-1 rounded-full flex items-center justify-center font-bold shadow-sm animate-in zoom-in duration-300">
+        {wishlistIds.length}
+      </span>
+    )}
+  </Link>
           <Link
-            href="/cart"
-            onClick={() => setIsSidebarOpen(false)}
-            className="flex items-center justify-between text-on-surface/70 font-medium"
-          >
-            <div className="flex items-center gap-3">
-              <ShoppingCart size={20} className="text-primary" />
-              Cart
-            </div>
-            <span className="bg-primary text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold">
-              1
-            </span>
-          </Link>
+    href="/ profile/cart"
+    onClick={() => setIsSidebarOpen(false)}
+    className="flex items-center justify-between text-on-surface/70 font-medium group transition-all"
+  >
+    <div className="flex items-center gap-3">
+      <ShoppingCart size={20} className="text-primary group-hover:scale-110 transition-transform" />
+      <span>Cart</span>
+    </div>
+    
+    {/* العداد الخاص بالكارت (لو عندك cartIds في نفس الـ Store أو Store تاني) */}
+    <span className="bg-primary text-white text-[10px] min-w-[20px] h-5 px-1 rounded-full flex items-center justify-center font-bold shadow-sm animate-in zoom-in duration-300">
+      {cartCount}
+    </span>
+  </Link>
         </div>
 
         {/* أزرار التسجيل */}
