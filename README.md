@@ -1,7 +1,6 @@
 # 🚀 Pure-Pick | The Curated Sanctuary
 [![Live Demo](https://img.shields.io/badge/demo-live-emerald.svg)](https://pure-pick-chi.vercel.app/)
-**Pure-Pick** هو متجر إلكتروني عصري "Luxury E-commerce" مبني بأحدث تقنيات الـ Web، يجمع بين الأداء الخرافي وتجربة المستخدم الراقية. المشروع يطبق مفاهيم الـ Full-stack الحديثة مع إدارة ذكية للحالات والمزامنة اللحظية.
-
+Pure-Pick: A high-performance luxury e-commerce experience built with Next.js 15, featuring real-time state synchronization and seamless full-stack integration.
 ---
 
 ## 🛠️ Tech Stack & Tools
