@@ -28,7 +28,7 @@ export const RegisterSchema = z.object({
 
 }).refine((data) => data.password === data.rePassword, {
   path: ['rePassword'], 
-  message: "Passwords do not match", // غيرنا error لـ message ✅
+  message: "Passwords do not match",
 });
 
 
@@ -74,5 +74,5 @@ export const ChangePasswordSchema = z.object({
   }),
 }).refine((data) => data.newPassword === data.confirmPassword, {
   message: "Passwords don't match",
-  path: ["confirmPassword"], // الخطأ يظهر تحت خانة التأكيد
+  path: ["confirmPassword"],
 });

@@ -37,8 +37,6 @@ export default function CartItemsList({ initialProducts }: { initialProducts: an
     const res = await removeItemFromCart(productId, token);
     if (res.status === "success") {
       toast.success("Item Removed");
-      
-      // 4. تحديث الستور هنا كمان عشان لو مسحت منتج الرقم ينقص
       await updateCartCount(token);
       
       router.refresh();
@@ -50,11 +48,11 @@ export default function CartItemsList({ initialProducts }: { initialProducts: an
     <div className="space-y-8">
       {initialProducts.map((item) => (
         <div key={item._id} className={`group flex flex-col md:flex-row gap-6 p-6 rounded-xl bg-surface-container-low transition-all ${loadingId === item.product._id ? 'opacity-50 pointer-events-none' : ''}`}>
-          <div className="w-full md:w-32 aspect-[4/5] bg-surface-container-high rounded-lg overflow-hidden flex-shrink-0">
+          <div className="w-full md:w-32 aspect-4/5 bg-surface-container-high rounded-lg overflow-hidden shrink-0">
             <img className="w-full h-full object-cover" src={item.product.imageCover} alt={item.product.title} />
           </div>
           
-          <div className="flex flex-col justify-between flex-grow">
+          <div className="flex flex-col justify-between grow">
             <div className="flex justify-between items-start">
               <div>
                 <p className="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">{item.product.category?.name}</p>
@@ -65,7 +63,6 @@ export default function CartItemsList({ initialProducts }: { initialProducts: an
 
             <div className="flex items-center justify-between mt-4">
               <div className="flex items-center gap-4 bg-surface-container-high px-4 py-2 rounded-full">
-                {/* زرار الناقص */}
                 <button 
                   onClick={() => handleUpdateCount(item.product._id, item.count - 1)}
                   className="text-on-surface-variant hover:text-on-surface cursor-pointer p-1"
@@ -74,8 +71,6 @@ export default function CartItemsList({ initialProducts }: { initialProducts: an
                 </button>
                 
                 <span className="text-sm font-bold w-4 text-center">{item.count}</span>
-                
-                {/* زرار الزايد */}
                 <button 
                   onClick={() => handleUpdateCount(item.product._id, item.count + 1)}
                   className="text-on-surface-variant hover:text-on-surface cursor-pointer p-1"
@@ -83,8 +78,6 @@ export default function CartItemsList({ initialProducts }: { initialProducts: an
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
-
-              {/* زرار المسح */}
               <button 
                 onClick={() => handleRemove(item.product._id)}
                 className="text-xs font-bold uppercase tracking-widest text-error hover:underline transition-all flex items-center gap-1"

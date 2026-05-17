@@ -35,8 +35,6 @@ export default function Register() {
               Join thousands of happy customers who enjoy fresh essentials
               delivered right to their doorstep.
             </p>
-
-            {/* القائمة (Features List) بنفس ستايل الصورة */}
             <div className="space-y-4 md:space-y-8 mb-8 md:mb-12">
               {/* Feature 1 */}
               <div className="flex items-start gap-3 md:gap-4 text-left">
@@ -56,7 +54,7 @@ export default function Register() {
                 </div>
               </div>
 
-              {/* Feature 2 */}
+
               <div className="flex items-start gap-3 md:gap-4 text-left">
                 <div className="p-2 md:p-3 rounded-full bg-primary/10 text-primary border border-primary/20 shrink-0">
                   <Truck className="w-5 h-5 md:w-5 md:h-5" strokeWidth={1.5} />

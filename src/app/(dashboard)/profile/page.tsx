@@ -18,13 +18,12 @@ export default async function ProfileDashboard() {
 
   return (
     <div className="space-y-8">
-      {/* الترحيب */}
+
       <div>
         <h2 className="text-2xl font-bold text-primary">Welcome back, {session?.user?.name}! 👋</h2>
         <p className="text-on-surface text-sm mt-1">From your account dashboard, you can easily check & view your recent orders.</p>
       </div>
 
-      {/* كروت الإحصائيات */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {stats.map((stat, i) => (
           <div key={i} className="p-5  rounded-2xl flex items-center gap-4 shadow-lg shadow-primary/10 hover:shadow-md transition-shadow">
@@ -38,8 +37,6 @@ export default async function ProfileDashboard() {
           </div>
         ))}
       </div>
-
-      {/* آخر الطلبات (Placeholder) */}
       <div className=" rounded-2xl overflow-hidden">
         <div className="p-4  bg-primary flex items-center gap-2">
           <Clock size={18} className="text-gray-800" />

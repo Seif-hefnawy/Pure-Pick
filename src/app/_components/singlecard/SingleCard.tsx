@@ -16,7 +16,7 @@ export default  function SingleCard({
   
   return (
     <>
-      <div className="aspect-4/5 relative overflow-hidden rounded-xl mb-4 ">
+      <div className="aspect-4/5 relative cursor-auto  overflow-hidden rounded-xl mb-4 ">
         {/* <img  */}
         <Image
           src={currentProduct.imageCover}
@@ -29,14 +29,11 @@ export default  function SingleCard({
 
         {/* Badge */}
         <div className="absolute top-1 left-4 right-4 flex items-center justify-between">
-          {/* الـ Badge (على الشمال) */}
           <Link href={`/products/${currentProduct.id}`}>
             <span className="   p-1.5 rounded-full  cursor-pointer hover:scale-110 transition-transform ">
               <Eye size={20} className="text-emerald-700 " />
             </span>
           </Link>
-
-          {/* الأيقونة الجديدة (على اليمين) */}
           <WishlistToggle productId={currentProduct.id} />
         </div>
 

@@ -7,7 +7,6 @@ import GlobalLoading from "../loading/GlobalLoading";
 import { useCartStore } from "@/store/useCartStore";
 import { addToCartApi } from "@/api/Cart.api";
 
-
 export default function AddToCartButton({ productId }: { productId: string }) {
   const [mounted, setMounted] = useState(false);
   const { cartIds, updateCartCount } = useCartStore();
@@ -20,12 +19,10 @@ export default function AddToCartButton({ productId }: { productId: string }) {
   if (!mounted) {
     return <div className="absolute bottom-4 right-4 w-10 h-10 rounded-full" />;
   }
-
-  // هنا بنعرف هل المنتج ده موجود في الـ cartIds اللي في الستور؟
   const isAlreadyInCart = cartIds.includes(productId);
-
   const handleAdd = async (e: React.MouseEvent) => {
-    e.preventDefault(); e.stopPropagation();
+    e.preventDefault();
+    e.stopPropagation();
 
     if (isAlreadyInCart) return toast.error("Product already in cart!");
     if (!session?.user?.token) return toast.error("Please login first");
@@ -39,8 +36,6 @@ export default function AddToCartButton({ productId }: { productId: string }) {
     setIsAdding(false);
   };
 
-
-
   return (
     <button
       onClick={handleAdd}
@@ -52,7 +47,7 @@ export default function AddToCartButton({ productId }: { productId: string }) {
     >
       {isAdding ? (
         <div className="scale-[0.15]">
-             <GlobalLoading />
+          <GlobalLoading />
         </div>
       ) : (
         <ShoppingCart size={18} />

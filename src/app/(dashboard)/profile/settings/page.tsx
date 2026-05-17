@@ -14,14 +14,11 @@ export default async function SettingsPage() {
 
   return (
     <div className="space-y-10">
-      {/* الـ Header ثابت سيرفر */}
       <div>
         <h2 className="text-2xl font-bold text-on-surface flex items-center gap-2">
           <ShieldCheck className="text-primary" /> Account Settings
         </h2>
       </div>
-
-      {/* البيانات الشخصية ثابتة سيرفر */}
       <section className="space-y-6">
         <div className="flex items-center gap-2 text-on-surface font-bold border-b border-on-surface/5 pb-2">
           <User size={18} />
@@ -58,7 +55,6 @@ export default async function SettingsPage() {
         </div>
       </section>
 
-      {/* هنا بنحط الكلاينت كومبوننت بتاعنا */}
       <SettingsForm />
     </div>
   );

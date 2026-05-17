@@ -7,12 +7,11 @@ export default async function BrandDetailsPage({
   params: Promise<{ id: string }> 
 }) {
   
-  // 1. Destructure الـ id من الـ params بعد الـ await
+  
   const { id } = await params;
 
   const allProducts = await getAllProducts();
 
-  // 2. Filter للمنتجات
   const products = allProducts.filter((product: any) => product.brand?._id === id);
 
   return (
@@ -23,7 +22,6 @@ export default async function BrandDetailsPage({
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {products.map((product: any) => {
-          // 3. Destructure لبيانات المنتج جوه الـ map عشان لو حبيت تستخدمهم هنا
           const { id, title, price, imageCover, category, ratingsAverage } = product;
 
           return (

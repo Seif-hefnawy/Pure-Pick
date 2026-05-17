@@ -23,11 +23,9 @@ export default function Login() {
   
         {/* 2. المحتوى الرئيسي */}
         <div className="relative z-10 flex min-h-screen flex-col md:flex-row items-center justify-center px-6 md:px-20 py-12 md:py-0 gap-10 md:gap-24">
-          {/* الجانب الأيسر: نفس تفاصيل الصورة (FreshCart Style) */}
+
           <section className="w-full md:w-1/2 flex flex-col items-center text-center">
   <div className="max-w-2xl w-full bg-white dark:bg-stone-900/40 rounded-4x1 overflow-hidden shadow-2xl border border-white/10 p-6 md:p-8">
-    
-    {/* 1. صورة عربة التسوق الكبيرة - زي الصورة بالظبط */}
     <div className="relative w-full aspect-16/10 mb-8 rounded-2xl overflow-hidden bg-stone-50 flex items-center justify-center">
       <Image
         src="/FreshCartImage.png" 
@@ -49,8 +47,6 @@ export default function Login() {
         Join thousands of happy customers who trust FreshCart for their daily grocery needs.
       </p>
     </div>
-
-    {/* 3. المميزات (Features) في سطر واحد زي الصورة */}
     <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 border-t border-stone-100 dark:border-white/5 pt-8">
       
       {/* Free Delivery */}
@@ -75,7 +71,6 @@ export default function Login() {
   </div>
 </section>
   
-          {/* الجانب الأيمن: الفورم (بدون تغيير في المحتوى) */}
           <section className="w-full md:w-1/2 flex justify-center md:justify-end ">
     <div className="w-full max-w-md bg-stone-900/60 backdrop-blur-2xl p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl">
       <div className="mb-8 text-center ">

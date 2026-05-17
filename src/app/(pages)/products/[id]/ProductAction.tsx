@@ -2,21 +2,20 @@
 
 import { Minus, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useSession } from "next-auth/react"; // بنحتاجها عشان الـ Token
-import { useCartStore } from "@/store/useCartStore"; // عشان نحدث العداد
-import { addToCartApi } from "@/api/Cart.api"; // الـ API اللي عملناه
+import { useSession } from "next-auth/react"; 
+import { useCartStore } from "@/store/useCartStore"; 
+import { addToCartApi } from "@/api/Cart.api"; 
 import toast from "react-hot-toast";
 
-// ضيف productId للـ props هنا
 export default function ProductAction({ price, productId }: { price: number; productId: string }) {
   const [count, setCount] = useState(1);
-  const [isAdding, setIsAdding] = useState(false); // حالة الـ Loading للزرار
+  const [isAdding, setIsAdding] = useState(false); 
   const { data: session } = useSession();
   const updateCartCount = useCartStore((state) => state.updateCartCount);
   const { cartIds } = useCartStore();
 const isAlreadyInCart = cartIds.includes(productId);
 
-  // دالة الإضافة للكارت
+
   const handleAddToCart = async () => {
     if (!session?.user?.token) {
       return toast.error("Please login to add items to cart");
@@ -27,19 +26,18 @@ const isAlreadyInCart = cartIds.includes(productId);
       console.log("جاري الإرسال للـ API...");
       const res = await addToCartApi(productId, session.user.token);
       
-      console.log("رد السيرفر الكامل:", res); // ده أهم سطر دلوقتي
+      console.log("رد السيرفر الكامل:", res); 
 
       if (res.status === "success") {
         toast.success(res.message);
         await updateCartCount(session.user.token);
         console.log("تم تحديث الستور بنجاح");
       } else {
-        // لو السيرفر رد بس الحالة مش success
         toast.error(res.message || "Failed to add product");
         console.error("فشل في الإضافة:", res);
       }
     } catch (error) {
-      // لو فيه مشكلة في الشبكة أو الـ URL غلط
+
       console.error("خطأ تقني (Network/URL):", error);
       toast.error("Something went wrong with the connection");
     } finally {
@@ -71,7 +69,7 @@ const isAlreadyInCart = cartIds.includes(productId);
 
       <div className="space-y-8 mb-5 mt-3">
         <div className="flex gap-3 mb-4">
-          {/* العداد */}
+
           <div className="flex items-center bg-surface-container rounded-lg px-4 border border-outline-variant ">
             <button
               disabled={count === 0}

@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
-import { authOptions } from "@/app/lib/auth"; // تأكد من المسار ده @ أو ../../
+import { authOptions } from "@/app/lib/auth"; 
 import { MapPin, Plus, Trash2, Edit2, Home, Briefcase } from "lucide-react";
 import AddAddressModal from "@/app/_components/adressModal/AddAdressModal";
 
@@ -25,9 +25,9 @@ export default async function AddressesPage() {
   // Fetch الحقيقي من الـ API
   const res = await fetch("https://ecommerce.routemisr.com/api/v1/addresses", {
     headers: {
-      "token": session.user.token, // هنا بنستخدم التوكين اللي إنت حفظته
+      "token": session.user.token, 
     },
-    next: { revalidate: 0 } // عشان الداتا تتحدث علطول
+    next: { revalidate: 0 } 
   });
 
   const data = await res.json();
@@ -49,7 +49,7 @@ export default async function AddressesPage() {
         <AddAddressModal token={session.user.token} />
       </div>
 
-      {/* قائمة العناوين الحقيقية */}
+     
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {addresses.map((addr) => (
           <div 
@@ -86,14 +86,14 @@ export default async function AddressesPage() {
           </div>
         ))}
 
-        {/* لو مفيش عناوين يظهر الـ Empty State */}
+        
         {addresses.length === 0 && (
            <div className="lg:col-span-2 py-20 border-2 border-dashed border-on-surface/10 rounded-3xl flex flex-col items-center justify-center text-center">
               <div className="w-16 h-16 bg-on-surface/5 rounded-full flex items-center justify-center mb-4 text-on-surface/20">
                 <MapPin size={32} />
               </div>
               <h3 className="text-on-surface font-bold text-xl">No Addresses Yet</h3>
-              <p className="text-on-surface/40 text-sm mt-1 max-w-[250px]">
+              <p className="text-on-surface/40 text-sm mt-1 max-w-62.5">
                 Add your first delivery address to make checkout faster and easier.
               </p>
               <AddAddressModal token={session.user.token} />

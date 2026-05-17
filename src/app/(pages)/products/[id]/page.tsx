@@ -203,11 +203,10 @@ export default async function ProductDetail({ params }: { params: any }) {
         <div className="py-10 ">
           <div className="max-w-5xl mx-auto px-6 flex flex-col items-center">
             {" "}
-            {/* إضافة Flex هنا لتوسيط الـ About */}
-            {/* About - متوسّط */}
+
+
             <div className="mb-12 max-w-2xl text-center">
               {" "}
-              {/* text-center للتوسيط */}
               <h3 className="text-xl font-bold  text-on-surface mb-3">
                 About this Product
               </h3>
@@ -215,7 +214,7 @@ export default async function ProductDetail({ params }: { params: any }) {
                 {data?.description}
               </p>
             </div>
-            {/* الـ Grid: جعلناه mx-auto وزودنا الـ gap */}
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 w-full max-w-4xl mx-auto">
               {/* Product Information - Compact */}
               <div className=" p-6 rounded-xl border border-outline-variant/20 shadow-sm h-full">
@@ -292,10 +291,9 @@ export default async function ProductDetail({ params }: { params: any }) {
             </Link>
           </div>
 
-          {/* الـ Grid اللي هيشيل السنجل كاردس */}
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 ">
             {relatedProducts?.slice(0, 4).map((item: any) => (
-              /* ضيفنا div هنا عشان نعزل الـ Card ونجبره يترص صح */
               <div
                 key={item._id}
                 className="w-full  flex flex-col group cursor-pointer  md:w-full shrink-0 snap-center h-fit bg-surface rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)]

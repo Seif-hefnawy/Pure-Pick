@@ -52,16 +52,16 @@ export default function AddAddressModal({ token }: { token: string }) {
       </button>
 
       {isOpen && (
-        <div className="fixed inset-0 z-[999] flex items-center justify-center p-4">
-          {/* Overlay بلمسة Blur */}
+        <div className="fixed inset-0 z-999 flex items-center justify-center p-4">
+          
           <div 
             className="absolute inset-0 bg-on-surface/40 backdrop-blur-md transition-opacity" 
             onClick={() => setIsOpen(false)} 
           />
 
           {/* Modal Card */}
-          <div className="relative bg-surface w-full max-w-lg rounded-[2rem] p-8 shadow-2xl border border-on-surface/5 overflow-hidden">
-            {/* الديكور العلوي */}
+          <div className="relative bg-surface w-full max-w-lg rounded-4x1 p-8 shadow-2xl border border-on-surface/5 overflow-hidden">
+          
             <div className="absolute top-0 left-0 w-full h-2 bg-primary" />
 
             <div className="flex justify-between items-start mb-8">
@@ -82,7 +82,7 @@ export default function AddAddressModal({ token }: { token: string }) {
               <div className="space-y-2">
                 <label className="text-xs font-bold text-on-surface/60 uppercase ml-1">Address Label</label>
                 <div className="relative group">
-                  <input name="name" required placeholder="e.g. Home, Work" className="w-full pl-12 pr-4 py-3.5 bg-on-surface/[0.03] border border-on-surface/10 rounded-2xl outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-on-surface" />
+                  <input name="name" required placeholder="e.g. Home, Work" className="w-full pl-12 pr-4 py-3.5 bg-on-surface/3 border border-on-surface/10 rounded-2xl outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-on-surface" />
                   <Info className="absolute left-4 top-4 text-on-surface/30 group-focus-within:text-primary transition-colors" size={18} />
                 </div>
               </div>
@@ -91,7 +91,7 @@ export default function AddAddressModal({ token }: { token: string }) {
               <div className="space-y-2">
                 <label className="text-xs font-bold text-on-surface/60 uppercase ml-1">City / Area</label>
                 <div className="relative group">
-                  <input name="city" required placeholder="e.g. Cairo" className="w-full pl-12 pr-4 py-3.5 bg-on-surface/[0.03] border border-on-surface/10 rounded-2xl outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-on-surface" />
+                  <input name="city" required placeholder="e.g. Cairo" className="w-full pl-12 pr-4 py-3.5 bg-on-surface/3 border border-on-surface/10 rounded-2xl outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-on-surface" />
                   <Building2 className="absolute left-4 top-4 text-on-surface/30 group-focus-within:text-primary transition-colors" size={18} />
                 </div>
               </div>
@@ -100,7 +100,7 @@ export default function AddAddressModal({ token }: { token: string }) {
               <div className="space-y-2">
                 <label className="text-xs font-bold text-on-surface/60 uppercase ml-1">Phone Number</label>
                 <div className="relative group">
-                  <input name="phone" required placeholder="01xxxxxxxxx" className="w-full pl-12 pr-4 py-3.5 bg-on-surface/[0.03] border border-on-surface/10 rounded-2xl outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-on-surface" />
+                  <input name="phone" required placeholder="01xxxxxxxxx" className="w-full pl-12 pr-4 py-3.5 bg-on-surface/3 border border-on-surface/10 rounded-2xl outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-on-surface" />
                   <Phone className="absolute left-4 top-4 text-on-surface/30 group-focus-within:text-primary transition-colors" size={18} />
                 </div>
               </div>
@@ -109,7 +109,7 @@ export default function AddAddressModal({ token }: { token: string }) {
               <div className="space-y-2">
                 <label className="text-xs font-bold text-on-surface/60 uppercase ml-1">Full Address Details</label>
                 <div className="relative group">
-                  <textarea name="details" required rows={3} placeholder="Street name, Building number, Apartment..." className="w-full pl-12 pr-4 py-3.5 bg-on-surface/[0.03] border border-on-surface/10 rounded-2xl outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-on-surface resize-none" />
+                  <textarea name="details" required rows={3} placeholder="Street name, Building number, Apartment..." className="w-full pl-12 pr-4 py-3.5 bg-on-surface/3 border border-on-surface/10 rounded-2xl outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 transition-all text-on-surface resize-none" />
                   <MapPin className="absolute left-4 top-4 text-on-surface/30 group-focus-within:text-primary transition-colors" size={18} />
                 </div>
               </div>
@@ -118,13 +118,12 @@ export default function AddAddressModal({ token }: { token: string }) {
                 <button 
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="flex-1 py-4 rounded-2xl font-bold text-on-surface/60 hover:bg-on-surface/5 transition-colors"
-                >
+                  className="flex-1 py-4 rounded-2xl font-bold text-on-surface/60 hover:bg-on-surface/5 transition-colors">
                   Cancel
                 </button>
                 <button 
                   disabled={isLoading}
-                  className="flex-[2] bg-primary text-white py-4 rounded-2xl font-bold disabled:opacity-50 transition-all shadow-lg shadow-primary/30 active:scale-[0.98]"
+                  className="flex-2 bg-primary text-white py-4 rounded-2xl font-bold disabled:opacity-50 transition-all shadow-lg shadow-primary/30 active:scale-[0.98]"
                 >
                   {isLoading ? "Saving Address..." : "Save Address"}
                 </button>

@@ -2,8 +2,6 @@ import React from "react";
 
 import SingleCard from "@/app/_components/singlecard/SingleCard";
 import { getAllProducts } from "@/api/Allproduct.api";
-import SectionWrapper from "./../../_components/scroll/SectionWrapper";
-import ScrollReveal from "@/app/_components/scroll/ScrollReveal";
 import DynamicSectionHeader from "@/app/_components/pageheader/DynamicSectionHeader";
 
 export default async function Products() {

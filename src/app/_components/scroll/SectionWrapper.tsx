@@ -5,15 +5,15 @@ import { ReactNode } from "react";
 export default function SectionWrapper({ children }: { children: ReactNode }) {
   return (
     <motion.section
-      initial={{ opacity: 0, y: 20 }} // يبدأ مختفي ومن تحت شوية
-      whileInView={{ opacity: 1, y: 0 }} // يظهر لما يدخل الشاشة
+      initial={{ opacity: 0, y: 20 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
       viewport={{ 
-        once: false,      // لو عاوزه يختفي ويظهر كل ما تسكرول خليه false
-        amount: 0.2       // يشتغل لما 20% من السكشن يدخل الشاشة
+        once: false,    
+        amount: 0.2      
       }}
       transition={{ 
         duration: 0.9, 
-        ease: [0.25, 0.1, 0.25, 1.0]  // حركة ناعمة جداً
+        ease: [0.25, 0.1, 0.25, 1.0]
       }}
       className="min-h-fit w-full"
     >

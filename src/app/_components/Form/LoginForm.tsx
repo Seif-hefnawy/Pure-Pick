@@ -31,22 +31,18 @@ export default function LoginForm() {
       const result = await signIn("credentials", {
         email: data.email,
         password: data.password,
-        redirect: false, // عشان نتحكم في الـ Navigation بنفسنا ونظهر التوست
+        redirect: false, 
       });
 
       if (result?.error) {
-        // لو NextAuth رجع error (يعني الـ authorize رجعت null)
+
         toast.error("Invalid email or password");
         setIsLoading(false);
       } else {
-        // لو نجح
         toast.success(`Welcome back to PurePick!`);
         router.refresh();
-        
-        // NextAuth بيعمل تحديث للـ session أوتوماتيك
         setTimeout(() => {
           router.push("/");
-          // router.refresh(); // حركة صايعة عشان يخلي النافبار يحس بالتغيير فوراً
         }, 1000);
       }
     } catch (error: any) {
@@ -79,7 +75,7 @@ export default function LoginForm() {
           </div>
 
           <div className="flex flex-col gap-1">
-            {/* العمود الأول: الباسورد */}
+            {/* : الباسورد */}
             <div className="flex flex-col gap-2">
               <label
                 htmlFor="password"
@@ -102,11 +98,10 @@ export default function LoginForm() {
               )}
             </div>
 
-            {/* العمود الثاني: التأكيد */}
           </div>
         </div>
 
-        {/* Checkbox Section */}
+
         <div className="flex flex-col gap-1">
           <div className="flex items-start gap-3 py-2">
             <input
@@ -134,17 +129,16 @@ export default function LoginForm() {
 
         <button
           type="submit"
-          disabled={isLoading} // 3. بيمنع الكليك ويخلي الزرار disabled
+          disabled={isLoading} 
           className={`w-full py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2
     ${
       isLoading
-        ? "bg-stone-700 cursor-not-allowed opacity-80" // 4. شكل الزرار والماوس وقت اللودينج
+        ? "bg-stone-700 cursor-not-allowed opacity-80" 
         : "bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
     }`}
         >
           {isLoading ? (
             <>
-              {/* الحاوية دي هي اللي هتحجم اللودينج بتاعك بالعافية */}
               <div className="relative w-6 h-6 overflow-hidden flex items-center justify-center">
                 <div className="scale-[0.2] transform origin-center">
                   <GlobalLoading />

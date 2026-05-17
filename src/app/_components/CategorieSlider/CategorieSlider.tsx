@@ -12,7 +12,6 @@ export default function CategorySlider() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    // بنجيب الداتا باستخدام الفانكشن بتاعتك
     getCategorie().then((res) => setCategories(res.data));
   }, []);
 
@@ -24,7 +23,7 @@ export default function CategorySlider() {
       <Swiper
         modules={[Autoplay, Navigation]}
         spaceBetween={10}
-        slidesPerView={2} // في الموبايل الصغير يبان 3
+        slidesPerView={2} 
         breakpoints={{
           640: { slidesPerView: 4, spaceBetween: 20 },
           1024: { slidesPerView: 6, spaceBetween: 30 },
@@ -34,7 +33,6 @@ export default function CategorySlider() {
       >
         {categories.map((cat: any) => (
           <SwiperSlide key={cat._id}>
-            {/* الكومبوننت بتاعك بالشكل اللي إنت عاوزه بالظبط */}
             <Link href={`/categories/${cat._id}`} className="group cursor-pointer flex flex-col items-center">
               <div className="relative w-36 h-36 rounded-full border-2 border-primary p-1 transition-all duration-300 ">
                 <div className="relative w-full h-full rounded-full overflow-hidden">

@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link"; // متنساش تعمل import للينك
 import SingleCard from "@/app/_components/singlecard/SingleCard";
 import { getAllProducts } from "@/api/Allproduct.api";
 import DynamicSectionHeader from "@/app/_components/pageheader/DynamicSectionHeader";
@@ -15,12 +14,11 @@ export default async function CategoryPage({
 
   const data = await getAllProducts(categoryId);
 
-  // بناخد اسم القسم من أول منتج في اللستة عشان نعرضه في الـ Breadcrumbs
+
   const categoryName = data?.length > 0 ? data[0].category.name : "All Products";
 
   return (
     <main className="py-5">
-      {/* --- بداية الـ Breadcrumbs (النافبار الصغير) --- */}
       <div className="max-w-7xl mx-auto  ">
         <Breadcrumbs
           steps={[
@@ -29,12 +27,11 @@ export default async function CategoryPage({
               href: "/categories",
             },
             {
-              label: categoryName, // ده اللي جبناه من أول منتج في اللستة
+              label: categoryName,
             },
           ]}
         />
       </div>
-      {/* --- نهاية الـ Breadcrumbs --- */}
 
       <DynamicSectionHeader
         className="mb-10"

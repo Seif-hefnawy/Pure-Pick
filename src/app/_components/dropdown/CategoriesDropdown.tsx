@@ -27,7 +27,7 @@ export default function CategoriesDropdown({ isActive }: Props) {
         />
       </button>
       {isOpen && (
-        <div className="absolute top-0 left-25 md:left-0 md:top-full mt-5 md:mt-3 w-48 md:w-64 rounded-2xl bg-surface border border-outline shadow-2xl z-[100] p-4">
+        <div className="absolute top-0 left-25 md:left-0 md:top-full mt-5 md:mt-3 w-48 md:w-64 rounded-2xl bg-surface border border-outline shadow-2xl z-100 p-4">
           <div className="flex flex-col gap-4">
             <Link
               href="/categories"

@@ -36,7 +36,6 @@ export default function Authdown() {
 
       {isOpen && (
         <>
-          {/* خلفية شفافة لغلق القائمة عند الضغط خارجها */}
           <div 
             className="fixed inset-0 z-10 cursor-pointer overflow-hidden" 
             onClick={() => setIsOpen(false)}
@@ -47,7 +46,6 @@ export default function Authdown() {
               
               {isAuthenticated ? (
                 <>
-                  {/* معلومات المستخدم */}
                   <div className="flex items-center gap-3 p-3 mb-2 border-b border-white/5">
                     <div className="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center text-primaryfont-bold text-sm border border-emerald-500/20">
                       {user?.name?.charAt(0).toUpperCase() || "U"}
@@ -62,8 +60,6 @@ export default function Authdown() {
                       </span>
                     </div>
                   </div>
-
-                  {/* روابط التنقل السريع باستخدام Next Link */}
                   <div className="flex flex-col gap-0.5">
                     {menuItems.map((item, index) => (
                       <Link 
@@ -79,8 +75,6 @@ export default function Authdown() {
                   </div>
 
                   <div className="my-2 border-t border-white/5"></div>
-
-                  {/* تسجيل الخروج */}
                   <button 
                     onClick={() => {
                       signOut({ callbackUrl: "/login" });
@@ -94,7 +88,6 @@ export default function Authdown() {
                 </>
               ) : (
                 <>
-                  {/* أزرار الدخول لو مش مسجل */}
                   <Link 
                     href="/login" 
                     className="flex items-center gap-3 p-3 text-stone-300 hover:bg-primary/5 hover:text-primary rounded-xl text-sm transition-all" 

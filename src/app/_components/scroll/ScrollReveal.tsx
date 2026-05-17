@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
-// حددنا أنواع الـ Animation اللي ممكن تحتاجها في الموقع كله
+
 type AnimationType = "fade-up" | "fade-down" | "fade-left" | "fade-right" | "zoom-in";
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   delay?: number;
   direction?: AnimationType;
   duration?: number;
-  className?: string; // عشان لو حبيت تضيف تنسيق زيادة من بره
+  className?: string; 
 }
 
 export default function ScrollReveal({ 
@@ -20,11 +20,11 @@ export default function ScrollReveal({
   className = "will-change-transform" 
 }: Props) {
   
-  // تعريف الحركات بناءً على الـ direction
+  
   const variants = {
   hidden: { 
     opacity: 0, 
-    y: 10, // قلل القيمة دي لـ 10 بدل 20 أو 50
+    y: 10, 
     transition: { duration: 0.3 } 
   },
   visible: { 
@@ -42,11 +42,11 @@ export default function ScrollReveal({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false , margin: "0px" , amount : 0.1}}
-      // variants={variants}
+      
       transition={{ 
         duration: 0.3, 
         delay: delay, 
-        ease: [0.25, 0.1, 0.25, 1.0] // حركة Professional جداً
+        ease: [0.25, 0.1, 0.25, 1.0] 
       }}
       className={className}
     >

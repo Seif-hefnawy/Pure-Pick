@@ -22,7 +22,6 @@ export default function WishlistPage() {
   const [wishlistItems, setWishlistItems] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   
-  // نداء الـ IDs من الـ Store
   const wishlistIds = useWishlistStore((state) => state.wishlistIds);
 
   useEffect(() => {
@@ -44,8 +43,6 @@ export default function WishlistPage() {
   const displayedItems = wishlistItems.filter((product) => 
     wishlistIds.includes(product.id)
   );
-
- 
   const totalValue = displayedItems.reduce((acc, item) => acc + item.price, 0);
 
   if (isLoading) {
@@ -115,7 +112,7 @@ export default function WishlistPage() {
               {displayedItems.map((product) => (
                 <div
                   key={product.id}
-                  className="w-full max-w-[300px] mx-auto lg:mx-0"
+                  className="w-full max-w-75 mx-auto lg:mx-0"
                 >
                   <SingleCard currentProduct={product} />
                 </div>
@@ -123,7 +120,6 @@ export default function WishlistPage() {
             </div>
           </div>
 
-          {/* Sidebar Summary */}
           <aside className="lg:col-span-4 xl:col-span-3">
             <div className="bg-surface rounded-2xl p-6 sticky top-24 ">
               <h3 className="text-lg font-bold mb-4 text-primary">Summary</h3>

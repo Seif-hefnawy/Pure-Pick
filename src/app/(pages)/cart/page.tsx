@@ -1,11 +1,10 @@
 import { Minus, Plus, CreditCard, Wallet, Star, ChevronRight } from "lucide-react";
 import { getLoggedUserCart } from "@/api/Cart.api";
-import { getServerSession } from "next-auth"; // تأكد من المسار ده عندك
-import CartItemsList from "./CartItemsList"; // المكون اللي تحت
+import { getServerSession } from "next-auth"; 
+import CartItemsList from "./CartItemsList"; 
 import { authOptions } from "@/app/lib/auth";
 
 export default async function CheckOut() {
-  // جلب الجلسة والتوكن
   const session = await getServerSession(authOptions);
   const token = session?.user?.token || "";
 
@@ -26,15 +25,11 @@ export default async function CheckOut() {
       </header>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
         <div className="lg:col-span-7 space-y-16">
-          <section>
+          <div>
             <h2 className="text-sm font-bold uppercase tracking-widest text-primary mb-8">Review Selection</h2>
-            
-            {/* عرض المنتجات الحقيقية */}
             <CartItemsList initialProducts={products} />
             
-          </section>
-
-          {/* Shipping Address Section (كما هو بدون تغيير) */}
+          </div>
           <section>
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-sm font-bold uppercase tracking-widest text-primary">Shipping Information</h2>
@@ -59,7 +54,7 @@ export default async function CheckOut() {
 
         <aside className="lg:col-span-5 space-y-8 sticky top-32">
           <section className="bg-surface-container rounded-2xl p-8 shadow-2xl shadow-black/20">
-            <h2 className="text-sm font-bold uppercase tracking-widest text-primary mb-6">Payment Method</h2>
+            <h3 className="text-sm font-bold uppercase tracking-widest text-primary mb-6">Payment Method</h3>
             <div className="space-y-4 mb-8">
               <label className="relative flex items-center p-4 rounded-xl cursor-pointer border-2 border-primary bg-primary/10 transition-all">
                 <div className="flex items-center justify-between w-full">
@@ -76,7 +71,7 @@ export default async function CheckOut() {
             </div>
 
             <div className="space-y-6">
-              <h2 className="text-sm font-bold uppercase tracking-widest text-primary">Order Summary</h2>
+              <h4 className="text-sm font-bold uppercase tracking-widest text-primary">Order Summary</h4>
               <div className="space-y-3">
                 <div className="flex justify-between text-sm">
                   <span className="text-on-surface-variant">Subtotal</span>

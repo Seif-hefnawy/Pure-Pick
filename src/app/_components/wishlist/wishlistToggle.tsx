@@ -12,7 +12,7 @@ export default function WishlistToggle({ productId }: { productId: string }) {
   const isLiked = wishlistIds.includes(productId);
 
   const handleToggle = async (e: React.MouseEvent) => {
-    e.preventDefault(); // عشان لو الكارت جوه Link مياخدناش لصفحة تانية
+    e.preventDefault(); 
     console.log("Heart Clicked! Product ID:", productId);
     
     if (!session?.user?.token) {
@@ -32,7 +32,7 @@ export default function WishlistToggle({ productId }: { productId: string }) {
         }
       }
     } catch (error) {
-      // لو حصل ايرور نرجع الحالة زي ما كانت (Rollback)
+    
       isLiked ? addToWishlist(productId) : removeFromWishlist(productId);
       toast.error("Failed to update wishlist");
     }

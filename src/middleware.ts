@@ -3,15 +3,15 @@ import { NextResponse } from "next/server";
 
 export default withAuth(
   function middleware(req) {
-    // هنا ممكن تضيف أي منطق إضافي لو حبيت
+
     return NextResponse.next();
   },
   {
     callbacks: {
-      authorized: ({ token }) => !!token, // لو فيه توكن يبقى مسموح له يدخل
+      authorized: ({ token }) => !!token, 
     },
     pages: {
-      signIn: "/login", // لو مش مسجل يرجعه هنا
+      signIn: "/login", 
     },
   }
 );

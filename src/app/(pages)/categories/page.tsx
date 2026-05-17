@@ -3,7 +3,7 @@ import DynamicSectionHeader from '@/app/_components/pageheader/DynamicSectionHea
 
 import { getCategorie } from '@/api/Categorie.api';
 
-// ده الـ Component الصغير اللي تقدر تنقله لملف لوحده وتستخدمه في الهوم
+
 
 
 export default async function CategoriesPage() {
@@ -14,7 +14,6 @@ export default async function CategoriesPage() {
     <>
       <DynamicSectionHeader title="" subtitle="Categories" />
       <section className="py-10 px-4 md:px-6 max-w-350 mx-auto overflow-hidden">
-  {/* هنا بنجبره يستخدم 1fr لكل عمود عشان يتقسموا بالتساوي غصب عنهم */}
   <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full">
     {data?.slice(0, 10).map((category: any) => (
       <CategoryCard 

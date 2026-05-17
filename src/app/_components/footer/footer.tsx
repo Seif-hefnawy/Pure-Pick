@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-// استيراد أيقونات Lucide
+
 import {
   Phone,
   Mail,
@@ -10,14 +10,13 @@ import {
   RefreshCw,
   ShieldCheck,
   HeadphonesIcon,
-  Send,
 } from "lucide-react";
 
 const footerSections = [
   {
     title: "Shop",
     links: [
-      { name: "All Products", href: "/shop" },
+      { name: "All Products", href: "/proudcts" },
       { name: "Categories", href: "/categories" },
       { name: "Brands", href: "/brands" },
       { name: "Electronics", href: "/electronics" },
@@ -29,8 +28,8 @@ const footerSections = [
     title: "Account",
     links: [
       { name: "My Account", href: "/account" },
-      { name: "Order History", href: "/account/orders" },
-      { name: "Wishlist", href: "/wishlist" },
+      { name: "Order History", href: "/profile" },
+      { name: "Wishlist", href: "/profile/wishlist" },
       { name: "Shopping Cart", href: "/cart" },
       { name: "Sign In", href: "/signin" },
       { name: "Create Account", href: "/signup" },
@@ -99,7 +98,6 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* الجزء الأوسط: الروابط والمعلومات */}
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-12 mb-16">
           {/* البراند والوصف */}
           <div className="lg:col-span-2 space-y-6">
@@ -125,8 +123,6 @@ export default function Footer() {
               </div>
             </div>
           </div>
-
-          {/* الروابط الديناميكية */}
           {footerSections.map((section) => (
             <div key={section.title} className="lg:col-span-1">
               <h4 className="text-on-surface font-bold mb-6">
@@ -148,7 +144,6 @@ export default function Footer() {
             </div>
           ))}
 
-          {/* Newsletter الاشتراك */}
         </div>
         
         {/* الجزء السفلي: السوشيال ميديا والحقوق */}

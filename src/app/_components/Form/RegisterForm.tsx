@@ -40,7 +40,7 @@ toast.dismiss();
     // فشل
     toast.error(error.message || "Registration failed");
   } finally {
-    setIsLoading(false); // 2. وقف اللودينج في الحالتين
+    setIsLoading(false); 
   }
 }
 
@@ -159,10 +159,10 @@ toast.dismiss();
 
         <button
   type="submit"
-  disabled={isLoading} // 3. بيمنع الكليك ويخلي الزرار disabled
+  disabled={isLoading} 
   className={`w-full py-3 px-4 rounded-xl transition-all duration-300 flex items-center justify-center space-x-2
     ${isLoading 
-      ? "bg-stone-700 cursor-not-allowed opacity-80" // 4. شكل الزرار والماوس وقت اللودينج
+      ? "bg-stone-700 cursor-not-allowed opacity-80" 
       : "bg-emerald-600 hover:bg-emerald-700 cursor-pointer"
     }`}
 >

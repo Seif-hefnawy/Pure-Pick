@@ -34,7 +34,6 @@ const cartCount = useCartStore((state) => state.cartCount);
 const { updateCartCount } = useCartStore();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   
-// 1. نادي على الـ Action من الـ Store
 const setWishlist = useWishlistStore((state) => state.setWishlist);
 const wishlistIds = useWishlistStore((state) => state.wishlistIds);
 
@@ -44,9 +43,7 @@ useEffect(() => {
       try {
         const res = await getUserWishlistApi(session.user.token);
         if (res.status === "success") {
-          // استخراج الـ IDs من الـ Data اللي راجعة
           const ids = res.data.map((item: any) => item.id);
-          // 2. تحديث الـ Store بالـ IDs الحقيقية من السيرفر
           setWishlist(ids);
         }
       } catch (error) {
@@ -65,10 +62,8 @@ useEffect(() => {
 
   return (
     <>
-      {/* --- Desktop & Mobile Header --- */}
       <nav className="sticky top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-outline shadow-sm dark:shadow-none transition-colors duration-300">
         <div className="flex justify-between items-center px-4 md:px-8 h-20 max-w-screen-2xl mx-auto gap-4">
-          {/* الجانب الأيمن: المنيو (موبايل) واللوجو */}
           <div className="flex items-center gap-2 md:gap-4 shrink-0">
             <button
               onClick={() => setIsSidebarOpen(true)}
@@ -261,9 +256,8 @@ useEffect(() => {
       <span>Wishlist</span>
     </div>
     
-    {/* العداد بيظهر بس لو فيه منتجات */}
     {wishlistIds.length > 0 && (
-      <span className="bg-primary text-white text-[10px] min-w-[20px] h-5 px-1 rounded-full flex items-center justify-center font-bold shadow-sm animate-in zoom-in duration-300">
+      <span className="bg-primary text-white text-[10px] min-w-5 h-5 px-1 rounded-full flex items-center justify-center font-bold shadow-sm animate-in zoom-in duration-300">
         {wishlistIds.length}
       </span>
     )}
@@ -277,15 +271,11 @@ useEffect(() => {
       <ShoppingCart size={20} className="text-primary group-hover:scale-110 transition-transform" />
       <span>Cart</span>
     </div>
-    
-    {/* العداد الخاص بالكارت (لو عندك cartIds في نفس الـ Store أو Store تاني) */}
-    <span className="bg-primary text-white text-[10px] min-w-[20px] h-5 px-1 rounded-full flex items-center justify-center font-bold shadow-sm animate-in zoom-in duration-300">
+    <span className="bg-primary text-white text-[10px] min-w-5 h-5 px-1 rounded-full flex items-center justify-center font-bold shadow-sm animate-in zoom-in duration-300">
       {cartCount}
     </span>
   </Link>
         </div>
-
-        {/* أزرار التسجيل */}
        {/* أزرار التسجيل والبروفايل */}
 <div className="flex flex-col gap-3 mt-4">
   {status === "authenticated" ? (
@@ -302,17 +292,14 @@ useEffect(() => {
           <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-xs font-bold">
             {session?.user?.name?.charAt(0).toUpperCase()}
           </div>
-          <span className="text-sm font-bold truncate max-w-[120px]">{user?.name || "User"}</span>
+          <span className="text-sm font-bold truncate max-w-30">{user?.name || "User"}</span>
         </div>
-        {/* سهم يتغير اتجاهه مع الفتح والقفل */}
         <span className={`transition-transform duration-300 ${isProfileOpen ? 'rotate-180' : ''}`}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </span>
       </button>
-
-      {/* القائمة المنسدلة الداخلية (Animate-in) */}
       <div className={`overflow-hidden transition-all duration-300 ease-in-out ${
-        isProfileOpen ? 'max-h-[400px] opacity-100 mt-2' : 'max-h-0 opacity-0'
+        isProfileOpen ? 'max-h-100 opacity-100 mt-2' : 'max-h-0 opacity-0'
       }`}>
         <div className="flex flex-col gap-1 pl-4 border-l-2 border-primary/20 ml-4">
           <Link href="/profile" onClick={() => setIsSidebarOpen(false)} className="flex items-center gap-3 p-3 text-on-surface/70 hover:text-primary text-sm transition-colors">
@@ -360,7 +347,7 @@ useEffect(() => {
   
 
 
-        {/* قسم الدعم الفني في الأسفل */}
+        {/* قسم الدعم الفني ل */}
         <div className=" p-4 bg-background rounded-2xl flex items-center gap-4">
           <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
             <Headphones size={20} />

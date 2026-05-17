@@ -7,8 +7,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useSession } from "next-auth/react";
-
-// الاستيرادات الخاصة بمشروعك
 import GlobalLoading from "../loading/GlobalLoading";
 import { resetUserPassword } from "@/api/ChangePassword.api"; // الفايل اللي في الصورة
 import { ChangePasswordSchema } from "@/schemas/auth.schema";
@@ -26,7 +24,7 @@ export default function SettingsForm() {
   } = useForm<z.infer<typeof ChangePasswordSchema>>({
     resolver: zodResolver(ChangePasswordSchema),
     defaultValues: {
-      currentPassword: "", // الـ API مش طالبها بس هنخليها لو السكيما بتلزمها
+      currentPassword: "", 
       newPassword: "",
       confirmPassword: "",
     },
@@ -42,7 +40,7 @@ export default function SettingsForm() {
 
     setIsLoading(true);
     try {
-      // نداء الـ API المنفصل (PUT Request)
+      
       const result = await resetUserPassword(userEmail, values.newPassword);
 
       if (result.ok) {
