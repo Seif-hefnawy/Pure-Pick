@@ -6,62 +6,59 @@ Pure-Pick: A high-performance luxury e-commerce experience built with Next.js 15
 ## 🛠️ Tech Stack & Tools
 
 ### 🏗️ Core Frameworks
-- **Framework:** Next.js 15 (App Router & Turbopack enabled).
-- **Library:** React 19 (React Compiler Optimized).
-- **Language:** TypeScript (Strict Type Safety).
+- **Framework:** Next.js 15 (App Router & Turbopack enabled)
+- **Library:** React 19 (React Compiler Optimized)
+- **Language:** TypeScript (Strict Type Safety)
 
 ### 🔐 Authentication & Session
-- **Next-Auth (Auth.js):** إدارة الجلسات (Sessions) بشكل آمن في السيرفر والكلاينت.
-- **JWT Integration:** نظام تشفير التوكنات لتأمين نداءات الـ API الخاصة بالمستخدم.
+- **Next-Auth (Auth.js):** Secure session management across Server and Client components
+- **JWT Integration:** Token-based authentication for secure backend API communication
 
 ### 📋 State Management & Forms
-- **Zustand:** لإدارة حالة السلة (Global Cart State) والمزامنة اللحظية بين الـ Navbar والـ Checkout.
-- **React Hook Form:** لتقديم نماذج (Forms) عالية الأداء.
-- **Zod:** للتحقق من صحة البيانات (Schema Validation).
+- **Zustand:** Global cart state management with real-time sync between Navbar and Checkout
+- **React Hook Form:** High-performance, flexible form handling
+- **Zod:** TypeScript-first schema declaration and data validation
 
 ### 🎨 Styling & UI
-- **Styling:** Tailwind CSS 4 مع نظام انيميشن `tailwindcss-animate`.
-- **Icons:** Lucide React & React Icons.
-- **Theme:** Next-Themes (دعم كامل للـ Dark & Light Mode).
-- **Feedback:** React Hot Toast للتنبيهات التفاعلية.
+- **Styling:** Tailwind CSS 4 with `tailwindcss-animate` for premium transitions
+- **Icons:** Lucide React & React Icons
+- **Theme:** Next-Themes (Flawless Dark/Light mode support)
+- **Feedback:** React Hot Toast for interactive user notifications
 
 ---
 
 ## ✨ Key Features (Implemented)
 
-- **Next-Gen Performance:** استغلال كامل لقدرات React 19 والـ React Compiler لتقليل الـ Re-renders.
-- **Global Cart Sync:** نظام سلة مشتريات ذكي؛ عند إضافة منتج أو حذفه، يتحدث عداد السلة في الـ Navbar والـ Checkout أوتوماتيكياً.
-- **Secure Flow:** جلب التوكنات مباشرة من الـ Server Session لضمان أمان البيانات وسرعة التحميل (SSR).
-- **Dynamic Checkout:** صفحة دفع ديناميكية تتيح (زيادة/نقصان/حذف) المنتجات مع تحديث إجمالي السعر لحظياً بدون Refresh.
-- **Luxury UI:** تصميم Responsive بالكامل، مع scrollbars مخفية، وتأثيرات بصرية تعطي إحساس الـ Mobile Apps الراقية.
+- **Next-Gen Performance:** Fully utilizing React 19 and the React Compiler to minimize re-renders and maximize speed
+- **Global Cart Sync:** Intelligent cart system where adding or removing items updates the Navbar counter and Checkout summary instantly
+- **Secure Data Flow:** Fetching session tokens directly from the Server to ensure data security and fast Server-Side Rendering (SSR)
+- **Dynamic Checkout:** A streamlined checkout page allowing users to update quantities or remove items with real-time price recalculation (Zero Refresh)
+- **Luxury Responsive UI:** Mobile-first approach with hidden scrollbars and custom aesthetics for a premium, app-like feel
 
 ---
 
 ## 🏗️ Architecture Inside
 
-المشروع مبني على أسس هندسية منظمة:
-- **API Layer:** فصل منطق الـ Backend في ملفات `Cart.api.ts` لسهولة الصيانة.
-- **Hybrid Fetching:** استخدام `getServerSession` لجلب البيانات في السيرفر و `router.refresh()` لتحديث الـ UI فوراً بعد أي تعديل.
-- **Optimized Assets:** استخدام تقنيات Next.js لضغط الصور وتحسين الـ LCP.
+The project follows a clean, modular engineering approach:
+- **API Layer:** Backend logic is isolated within `api/` modules (e.g., `Cart.api.ts`) for maintainability
+- **Hybrid Fetching:** Leveraging `getServerSession` for secure data fetching and `router.refresh()` for instant UI synchronization after mutations
+- **Optimized Assets:** Advanced Next.js image optimization to ensure lightning-fast Largest Contentful Paint (LCP)
 
 ---
 
-## 🛠️ Roadmap - Progress
+## 🗺️ Roadmap
 
-- [x] **Registration UI & Logic:** نظام تسجيل كامل مع Zod Validation.
-- [x] **Login System:** تكامل كامل مع Next-Auth و JWT.
-- [x] **Shopping Cart:** نظام سلة متكامل (Add, Update, Remove).
-- [x] **Dynamic Checkout:** ربط السلة بالبيانات الحقيقية للسيرفر.
-- [ ] **Product Catalog:** تطوير نظام عرض المنتجات المتقدم.
-- [ ] **Category Filtering:** فلاتر ذكية للمنتجات.
+| Status | Feature |
+|--------|---------|
+| ✅ | Registration UI & Logic - Secure system with Zod schema validation |
+| ✅ | Login System - Full integration with Next-Auth and JWT persistence |
+| ✅ | Shopping Cart - Complete management system (Add, Update, Remove) |
+| ✅ | Dynamic Checkout - Real-time synchronization with the backend API |
+| ✅ | Product Catalog - Advanced dynamic product grid implementation |
+| ✅ | Category Filtering - Smart sorting and filtering for enhanced discovery |
+| ✅ | Order History - Track past purchases and order status |
+| ✅ | Wishlist - Save favorite items for later |
 
 ---
 
-## 💻 Local Setup
-
-عشان تشغل **Pure-Pick** عندك على الجهاز:
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/Seif-hefnawy/pure-pick.git](https://github.com/Seif-hefnawy/pure-pick.git)
-   cd pure-pick
+## 🔐 Environment Variables
