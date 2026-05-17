@@ -1,53 +1,66 @@
-# 🛍️ PurePick - Modern E-commerce Platform
-
-**PurePick** is a high-performance, visually stunning e-commerce application. Built with **Next.js 16** and **React 19**, it focuses on sculptural elegance, premium UX, and robust data integrity.
-
-> **Project Status:** 🚧 Under Active Development.
+# 🚀 Pure-Pick | The Curated Sanctuary
+[![Live Demo](https://img.shields.io/badge/demo-live-emerald.svg)](https://pure-pick-chi.vercel.app/)
+**Pure-Pick** هو متجر إلكتروني عصري "Luxury E-commerce" مبني بأحدث تقنيات الـ Web، يجمع بين الأداء الخرافي وتجربة المستخدم الراقية. المشروع يطبق مفاهيم الـ Full-stack الحديثة مع إدارة ذكية للحالات والمزامنة اللحظية.
 
 ---
 
-## 🚀 Tech Stack & Tools
+## 🛠️ Tech Stack & Tools
 
 ### 🏗️ Core Frameworks
-* **Framework:** [Next.js 16.2](https://nextjs.org/) (App Router & Turbopack)
-* **Library:** [React 19](https://reactjs.org/) (React Compiler Enabled)
+- **Framework:** Next.js 15 (App Router & Turbopack enabled).
+- **Library:** React 19 (React Compiler Optimized).
+- **Language:** TypeScript (Strict Type Safety).
 
-### 📋 Form Handling & Validation
-* **[React Hook Form](https://react-hook-form.com/):** For high-performance, flexible, and extensible forms.
-* **[Zod](https://zod.dev/):** TypeScript-first schema declaration and validation library.
-* **[@hookform/resolvers](https://github.com/react-hook-form/resolvers):** Seamless integration between React Hook Form and Zod.
+### 🔐 Authentication & Session
+- **Next-Auth (Auth.js):** إدارة الجلسات (Sessions) بشكل آمن في السيرفر والكلاينت.
+- **JWT Integration:** نظام تشفير التوكنات لتأمين نداءات الـ API الخاصة بالمستخدم.
+
+### 📋 State Management & Forms
+- **Zustand:** لإدارة حالة السلة (Global Cart State) والمزامنة اللحظية بين الـ Navbar والـ Checkout.
+- **React Hook Form:** لتقديم نماذج (Forms) عالية الأداء.
+- **Zod:** للتحقق من صحة البيانات (Schema Validation).
 
 ### 🎨 Styling & UI
-* **Styling:** [Tailwind CSS 4](https://tailwindcss.com/) with `tailwindcss-animate`.
-* **Icons:** [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/).
-* **Theme Management:** [Next-Themes](https://github.com/pacocoursey/next-themes) (Dark/Light mode support).
-* **Loaders:** [React Spinners](https://www.davidhu.io/react-spinners/) for the global `DotLoader` system.
+- **Styling:** Tailwind CSS 4 مع نظام انيميشن `tailwindcss-animate`.
+- **Icons:** Lucide React & React Icons.
+- **Theme:** Next-Themes (دعم كامل للـ Dark & Light Mode).
+- **Feedback:** React Hot Toast للتنبيهات التفاعلية.
 
 ---
 
 ## ✨ Key Features (Implemented)
 
-- [x] **Next-Gen Performance:** Fully utilizing **React 19** and the new **React Compiler** for optimized rendering.
-- [x] **Advanced Form Logic:** Secure registration system powered by **Zod Schemas** for real-time validation and error feedback.
-- [x] **Global Loading UI:** Professional integration for smooth page transitions and data fetching states.
-- [x] **Theme Switcher:** Seamless Dark and Light mode transitions with persistent state.
-- [x] **Luxury Responsive Design:** Mobile-first approach with hidden scrollbars and custom animations for a premium "app-like" experience.
+- **Next-Gen Performance:** استغلال كامل لقدرات React 19 والـ React Compiler لتقليل الـ Re-renders.
+- **Global Cart Sync:** نظام سلة مشتريات ذكي؛ عند إضافة منتج أو حذفه، يتحدث عداد السلة في الـ Navbar والـ Checkout أوتوماتيكياً.
+- **Secure Flow:** جلب التوكنات مباشرة من الـ Server Session لضمان أمان البيانات وسرعة التحميل (SSR).
+- **Dynamic Checkout:** صفحة دفع ديناميكية تتيح (زيادة/نقصان/حذف) المنتجات مع تحديث إجمالي السعر لحظياً بدون Refresh.
+- **Luxury UI:** تصميم Responsive بالكامل، مع scrollbars مخفية، وتأثيرات بصرية تعطي إحساس الـ Mobile Apps الراقية.
 
 ---
 
-## 🛠️ Roadmap - What's Coming Next?
+## 🏗️ Architecture Inside
 
-- [x] **Registration UI & Logic:** Completed with full client-side validation.
-- [ ] **Login System:** Implementing secure login with JWT or NextAuth integration.
-- [ ] **Product Catalog:** Fetching and displaying dynamic product grids from the backend.
-- [ ] **Category Filtering:** Advanced sorting for Fashion, Electronics, etc.
-- [ ] **Shopping Cart:** Full state management for a seamless checkout journey.
+المشروع مبني على أسس هندسية منظمة:
+- **API Layer:** فصل منطق الـ Backend في ملفات `Cart.api.ts` لسهولة الصيانة.
+- **Hybrid Fetching:** استخدام `getServerSession` لجلب البيانات في السيرفر و `router.refresh()` لتحديث الـ UI فوراً بعد أي تعديل.
+- **Optimized Assets:** استخدام تقنيات Next.js لضغط الصور وتحسين الـ LCP.
+
+---
+
+## 🛠️ Roadmap - Progress
+
+- [x] **Registration UI & Logic:** نظام تسجيل كامل مع Zod Validation.
+- [x] **Login System:** تكامل كامل مع Next-Auth و JWT.
+- [x] **Shopping Cart:** نظام سلة متكامل (Add, Update, Remove).
+- [x] **Dynamic Checkout:** ربط السلة بالبيانات الحقيقية للسيرفر.
+- [ ] **Product Catalog:** تطوير نظام عرض المنتجات المتقدم.
+- [ ] **Category Filtering:** فلاتر ذكية للمنتجات.
 
 ---
 
 ## 💻 Local Setup
 
-To run **PurePick** on your machine:
+عشان تشغل **Pure-Pick** عندك على الجهاز:
 
 1. **Clone the repository:**
    ```bash
